@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+  <url>
+    <loc>https://www.petrolsupplier.com/</loc>
+    <video:video>
+      <video:thumbnail_loc>https://www.petrolsupplier.com/assets/photos/logo.png</video:thumbnail_loc>
+      <video:title>BASH EMIR - Нефтепродукты по всему миру</video:title>
+      <video:description>Героический видеоролик BASH EMIR - международного трейдера нефти, нефтепродуктов и СУГ. Спотовые решения и долгосрочные контракты с прозрачным ценообразованием.</video:description>
+      <video:content_loc>https://www.petrolsupplier.com/assets/videos/1111.mp4</video:content_loc>
+      <video:duration>30</video:duration>
+      <video:publication_date>2025-01-01</video:publication_date>
+      <video:tag>нефть</video:tag>
+      <video:tag>нефтепродукты</video:tag>
+      <video:tag>трейдинг</video:tag>
+      <video:tag>бизнес</video:tag>
+      <video:tag>логистика</video:tag>
+      <video:category>Бизнес</video:category>
+      <video:restriction relationship="allow">RU IR TR KZ AZ TM</video:restriction>
+    </video:video>
+  </url>
+  
+  <url>
+    <loc>https://www.petrolsupplier.com/</loc>
+    <video:video>
+      <video:thumbnail_loc>https://www.petrolsupplier.com/assets/photos/logo.png</video:thumbnail_loc>
+      <video:title>BASH EMIR - Петрольные решения</video:title>
+      <video:description>Второй видеоролик BASH EMIR о международной торговле нефтепродуктами.</video:description>
+      <video:content_loc>https://www.petrolsupplier.com/assets/videos/video.mp4</video:content_loc>
+      <video:duration>30</video:duration>
+      <video:publication_date>2025-01-01</video:publication_date>
+      <video:tag>нефть</video:tag>
+      <video:tag>нефтепродукты</video:tag>
+      <video:tag>бизнес</video:tag>
+      <video:category>Бизнес</video:category>
+      <video:restriction relationship="allow">RU IR TR KZ AZ TM</video:restriction>
+    </video:video>
+  </url>
+</urlset>
