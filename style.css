@@ -2065,6 +2065,19 @@ a.product-btn[href="koks.html"] {
     border: 1px solid #25f4ee;
 }
 
+.social-pill-whatsapp-channel {
+    border-color: #25D366;
+}
+
+.social-pill-whatsapp-channel:hover {
+    background: rgba(37, 211, 102, 0.2);
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+}
+
+.social-pill-whatsapp-channel .tg-icon-circle {
+    background-color: #25D366;
+}
+
 /* Ensure contact info section handles the new content well */
 .contact-info {
     display: flex;
