@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -13,6 +14,8 @@ import { NotFound } from "@higgsfield/quanta/not-found";
 
 import appCss from "../styles.css?url";
 import { reportHiggsfieldError } from "../lib/higgsfield-error-reporting";
+import { dictionaries, isRtl, resolveLocale } from "../i18n";
+import { scrollScrubTheme } from "../scroll-scrub-scenes";
 // Page metadata (browser <title>/favicon + social og: tags) committed into the
 // repo by the marketplace meta API and read at BUILD time — no runtime fetch.
 // Editing it via the app settings UI rewrites this file and redeploys the app.
@@ -21,8 +24,11 @@ import appMetaJson from "../app-meta.json";
 declare const __HF_DESIGN_INSPECTOR__: boolean;
 
 // Built-in defaults for any field that isn't set in app-meta.json.
-const DEFAULT_TITLE = "Higgsfield App";
-const DEFAULT_DESCRIPTION = "Higgsfield Generated Project";
+const DEFAULT_TITLE = dictionaries.ru.metaTitle;
+const DEFAULT_DESCRIPTION = dictionaries.ru.metaDescription;
+
+const FONTS_HREF =
+  "https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&family=JetBrains+Mono:wght@400;500;600&family=Vazirmatn:wght@100..900&display=swap";
 
 type AppMeta = {
   og_title?: string | null;
@@ -80,12 +86,12 @@ function buildHead(meta: AppMeta) {
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title },
       { name: "description", content: description },
-      { name: "author", content: "Higgsfield" },
+      { name: "author", content: "Bash Emir" },
+      { name: "theme-color", content: scrollScrubTheme.background },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: ogImage ? "summary_large_image" : "summary" },
-      { name: "twitter:site", content: "@Higgsfield" },
       ...(ogImage
         ? [
             { property: "og:image", content: ogImage },
@@ -97,7 +103,17 @@ function buildHead(meta: AppMeta) {
       ...(ogVideo ? [{ property: "og:video", content: ogVideo }] : []),
     ],
     links: [
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      {
+        rel: "preconnect",
+        href: "https://fonts.gstatic.com",
+        crossOrigin: "anonymous" as const,
+      },
+      { rel: "stylesheet", href: FONTS_HREF },
       { rel: "stylesheet", href: appCss },
+      { rel: "apple-touch-icon", href: "/assets/brand/apple-touch-icon.png" },
+      { rel: "icon", type: "image/png", sizes: "32x32", href: "/assets/brand/favicon-32.png" },
+      { rel: "manifest", href: "/site.webmanifest" },
       ...(favicon ? [{ rel: "icon", href: favicon }] : []),
     ],
   };
@@ -163,8 +179,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: ReactNode }) {
+  // The locale travels in ?lang= (see routes/index.tsx); the shell mirrors it
+  // onto <html> so language and text direction are correct at SSR time.
+  const search = useRouterState({
+    select: (s) => s.location.search as Record<string, unknown>,
+  });
+  const locale = resolveLocale(search?.lang);
   return (
-    <html lang="en" data-theme="default-dark" style={{ colorScheme: "dark" }}>
+    <html
+      lang={dictionaries[locale].htmlLang}
+      dir={isRtl(locale) ? "rtl" : "ltr"}
+      data-theme="default-dark"
+      style={{ colorScheme: "dark" }}
+    >
       {/* Marketplace apps are permanently dark: data-theme is pinned on <html>
           above. Do not add quanta's bootstrapScript/ThemeController, a theme
           toggle, or a light mode. */}
