@@ -1,1 +1,4 @@
 node_modules
+
+# design-pipeline working artifacts (boards, raw renders)
+refs/

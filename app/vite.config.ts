@@ -99,6 +99,36 @@ export default defineConfig(({ command, mode }) => {
       // inside effects/handlers, or guarded with `typeof window !== "undefined"`.
       tanstackStart({
         server: { entry: "server" },
+        // Static export for GitHub Pages (bashemir.com): bake every route to
+        // HTML at build time. Enabled only via STATIC_EXPORT=1 so platform
+        // (Worker) deploys keep pure SSR output.
+        prerender: {
+          enabled: process.env.STATIC_EXPORT === "1",
+          crawlLinks: false,
+          autoSubfolderIndex: true,
+          failOnError: true,
+          retryCount: 4,
+        },
+        pages: [
+          "/",
+          "/factories",
+          "lpg",
+          "diesel",
+          "eco93",
+          "lsfo",
+          "baseoil",
+          "bitumen",
+          "petcoke",
+          "paraffin",
+          "sulfuric-acid",
+          "iodine",
+          "urea46",
+          "sulfur",
+          "salt",
+          "cement",
+        ].map((p) => ({
+          path: p.startsWith("/") ? p : `/products/${p}`,
+        })),
       }),
       higgsfieldDesignInspectorVitePlugin(designInspectorEnabled),
       react({
