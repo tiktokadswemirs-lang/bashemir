@@ -1,0 +1,485 @@
+/**
+ * Product catalog data. Descriptions come from the original bashemir.com
+ * product pages (RU), translated to EN/TR/FA. Photos and spec PDFs are the
+ * company's own files, mirrored into /assets/products and /assets/specs.
+ * Spec values are copied verbatim from the original pages; textual values are
+ * localized, numeric values are shared.
+ */
+import type { Locale } from "@/i18n";
+
+type L10n = Record<Locale, string>;
+type SpecValue = string | L10n;
+
+export interface SpecRow {
+  name: L10n;
+  values: SpecValue[];
+}
+
+export interface SpecTable {
+  standard?: string;
+  headers: Record<Locale, string[]>;
+  rows: SpecRow[];
+  note?: L10n;
+}
+
+export interface Product {
+  slug: string;
+  /** Index into dict.products.categories */
+  category: number;
+  image: string;
+  gallery?: string[];
+  pdfs?: string[];
+  grades?: string[];
+  origin?: L10n;
+  specImage?: string;
+  specTable?: SpecTable;
+  name: L10n;
+  desc: L10n;
+}
+
+const originTm: L10n = {
+  ru: "Туркменистан",
+  en: "Turkmenistan",
+  tr: "Türkmenistan",
+  fa: "ترکمنستان",
+};
+
+const originTmIran: L10n = {
+  ru: "Туркменистан, Иран",
+  en: "Turkmenistan, Iran",
+  tr: "Türkmenistan, İran",
+  fa: "ترکمنستان، ایران",
+};
+
+const notRated: L10n = {
+  ru: "не нормируется",
+  en: "not rated",
+  tr: "belirlenmemiş",
+  fa: "تعیین نشده",
+};
+
+export const PRODUCTS: Product[] = [
+  {
+    slug: "lpg",
+    category: 0,
+    image: "/assets/products/lpg.jpg",
+    pdfs: ["/assets/specs/lpg.pdf"],
+    name: {
+      ru: "Сжиженный углеводородный газ",
+      en: "Liquefied petroleum gas",
+      tr: "Sıvılaştırılmış petrol gazı",
+      fa: "گاز مایع (ال‌پی‌جی)",
+    },
+    desc: {
+      ru: "Сжиженный углеводородный газ (LPG): универсальный и экологически эффективный вид топлива, широко используемый в бытовых, промышленных и транспортных целях.",
+      en: "Liquefied petroleum gas (LPG) is a versatile and environmentally efficient fuel, widely used for household, industrial and transport purposes.",
+      tr: "Sıvılaştırılmış petrol gazı (LPG), evsel, endüstriyel ve ulaşım amaçlarıyla yaygın olarak kullanılan çok yönlü ve çevre açısından verimli bir yakıttır.",
+      fa: "گاز مایع (ال‌پی‌جی) سوختی چندمنظوره و از نظر زیست‌محیطی کارآمد است که به‌طور گسترده در مصارف خانگی، صنعتی و حمل‌ونقل استفاده می‌شود.",
+    },
+  },
+  {
+    slug: "diesel",
+    category: 0,
+    image: "/assets/products/diesel.jpg",
+    pdfs: ["/assets/specs/diesel.pdf"],
+    name: {
+      ru: "Гидроочищенное дизельное топливо",
+      en: "Hydrotreated diesel fuel",
+      tr: "Hidro arıtılmış dizel yakıt",
+      fa: "گازوئیل هیدروتریت‌شده",
+    },
+    desc: {
+      ru: "Гидроочищенное дизельное топливо: высококачественное топливо с минимальным содержанием серы. Процесс гидроочистки позволяет значительно снизить количество вредных выбросов при сгорании, что делает это топливо экологически эффективным и соответствующим современным мировым стандартам.",
+      en: "Hydrotreated diesel is a high-quality fuel with minimal sulfur content. Hydrotreating significantly reduces harmful combustion emissions, making this fuel environmentally efficient and compliant with modern international standards.",
+      tr: "Hidro arıtılmış dizel, minimum kükürt içeriğine sahip yüksek kaliteli bir yakıttır. Hidro arıtma işlemi, yanma sırasındaki zararlı emisyonları önemli ölçüde azaltır ve yakıtı modern uluslararası standartlara uygun hale getirir.",
+      fa: "گازوئیل هیدروتریت‌شده سوختی باکیفیت با حداقل میزان گوگرد است. فرآیند هیدروتریت آلاینده‌های احتراق را به‌طور چشمگیری کاهش می‌دهد و این سوخت را با استانداردهای روز جهانی سازگار می‌کند.",
+    },
+  },
+  {
+    slug: "eco93",
+    category: 0,
+    image: "/assets/products/eco93.jpg",
+    origin: originTm,
+    name: {
+      ru: "Бензин марки ECO 93",
+      en: "ECO 93 gasoline",
+      tr: "ECO 93 benzin",
+      fa: "بنزین ECO 93",
+    },
+    desc: {
+      ru: "Бензин ECO 93: синтетическое автомобильное топливо, производимое из природного газа по технологии GTG на газохимическом комплексе в Ахалском велаяте Туркменистана. Отличается низким содержанием серы и чистым сгоранием.",
+      en: "ECO 93 is a synthetic motor gasoline produced from natural gas using GTG technology at the gas-to-gasoline complex in Turkmenistan's Ahal province. It features low sulfur content and clean combustion.",
+      tr: "ECO 93, Türkmenistan'ın Ahal vilayetindeki doğalgazdan benzin kompleksinde GTG teknolojisiyle doğal gazdan üretilen sentetik bir motor benzinidir. Düşük kükürt içeriği ve temiz yanma özelliğine sahiptir.",
+      fa: "بنزین ECO 93 سوخت خودرویی سنتزی است که با فناوری GTG از گاز طبیعی در مجتمع گاز به بنزین استان آخال ترکمنستان تولید می‌شود و با گوگرد کم و احتراق پاک شناخته می‌شود.",
+    },
+  },
+  {
+    slug: "lsfo",
+    category: 0,
+    image: "/assets/products/lsfo.jpg",
+    pdfs: ["/assets/specs/lsfo-1.pdf", "/assets/specs/lsfo-2.pdf"],
+    name: {
+      ru: "Мазут с низким содержанием серы",
+      en: "Low-sulfur fuel oil",
+      tr: "Düşük kükürtlü fuel oil",
+      fa: "نفت کوره کم‌گوگرد",
+    },
+    desc: {
+      ru: "Мазут с низким содержанием серы: экологически чистое судовое топливо, соответствующее международным стандартам IMO 2020. Использование данного вида топлива значительно снижает выбросы оксидов серы, что способствует защите морской экосистемы и улучшению качества воздуха.",
+      en: "Low-sulfur fuel oil is a clean marine fuel compliant with the IMO 2020 international standard. It significantly reduces sulfur oxide emissions, protecting the marine ecosystem and improving air quality.",
+      tr: "Düşük kükürtlü fuel oil, IMO 2020 uluslararası standardına uygun temiz bir deniz yakıtıdır. Kükürt oksit emisyonlarını önemli ölçüde azaltarak deniz ekosistemini korur ve hava kalitesini iyileştirir.",
+      fa: "نفت کوره کم‌گوگرد سوخت دریایی پاکی است که با استاندارد بین‌المللی IMO 2020 مطابقت دارد و با کاهش چشمگیر اکسیدهای گوگرد به حفاظت از اکوسیستم دریایی و بهبود کیفیت هوا کمک می‌کند.",
+    },
+  },
+  {
+    slug: "baseoil",
+    category: 1,
+    image: "/assets/products/baseoil.jpg",
+    pdfs: ["/assets/specs/baseoil.pdf"],
+    grades: ["SN 1200", "SN 600", "SN 350", "SN 180", "SN 80"],
+    name: {
+      ru: "Базовое масло",
+      en: "Base oil",
+      tr: "Baz yağ",
+      fa: "روغن پایه",
+    },
+    desc: {
+      ru: "Базовое масло: очищенная нефтяная основа, используемая для производства товарных смазочных материалов.",
+      en: "Base oil is a refined petroleum base stock used in the production of finished lubricants.",
+      tr: "Baz yağ, ticari yağlayıcıların üretiminde kullanılan rafine edilmiş petrol bazıdır.",
+      fa: "روغن پایه، پایه نفتی تصفیه‌شده‌ای است که در تولید روان‌کننده‌های تجاری به کار می‌رود.",
+    },
+  },
+  {
+    slug: "bitumen",
+    category: 1,
+    image: "/assets/products/bitumen.jpg",
+    pdfs: ["/assets/specs/bitumen.pdf"],
+    origin: originTmIran,
+    name: {
+      ru: "Битум",
+      en: "Bitumen",
+      tr: "Bitüm",
+      fa: "قیر",
+    },
+    desc: {
+      ru: "Битум: твёрдая или смолоподобная смесь углеводородов и их производных, получаемая в процессе переработки нефти. Широко применяется в дорожном строительстве, гидроизоляции и производстве кровельных материалов.",
+      en: "Bitumen is a solid or resin-like blend of hydrocarbons and their derivatives obtained in oil refining. It is widely used in road construction, waterproofing and roofing materials.",
+      tr: "Bitüm, petrol rafinasyonunda elde edilen katı veya reçine benzeri bir hidrokarbon karışımıdır. Yol yapımında, su yalıtımında ve çatı malzemeleri üretiminde yaygın olarak kullanılır.",
+      fa: "قیر مخلوطی جامد یا رزین‌مانند از هیدروکربن‌ها و مشتقات آن‌هاست که در فرآیند پالایش نفت به دست می‌آید و به‌طور گسترده در راه‌سازی، عایق‌کاری و تولید مصالح پوششی به کار می‌رود.",
+    },
+  },
+  {
+    slug: "petcoke",
+    category: 1,
+    image: "/assets/products/petcoke.jpg",
+    pdfs: ["/assets/specs/petcoke.pdf"],
+    name: {
+      ru: "Нефтяной кокс",
+      en: "Petroleum coke",
+      tr: "Petrol koku",
+      fa: "کک نفتی",
+    },
+    desc: {
+      ru: "Нефтяной кокс (Petcoke): твердый остаток вторичной переработки нефти или нефтепродуктов. Используется для изготовления электродов, а также в качестве топлива.",
+      en: "Petroleum coke (petcoke) is a solid residue of secondary oil refining. It is used for electrode production and as a fuel.",
+      tr: "Petrol koku (petcoke), petrolün ikincil rafinasyonundan kalan katı bir kalıntıdır. Elektrot üretiminde ve yakıt olarak kullanılır.",
+      fa: "کک نفتی باقی‌مانده جامد فرآوری ثانویه نفت است که در ساخت الکترود و به‌عنوان سوخت استفاده می‌شود.",
+    },
+  },
+  {
+    slug: "paraffin",
+    category: 1,
+    image: "/assets/products/paraffin.jpg",
+    pdfs: ["/assets/specs/paraffin.pdf"],
+    origin: originTm,
+    name: {
+      ru: "Смесовой парафиновый гач",
+      en: "Blended paraffin slack wax",
+      tr: "Karışım parafin slack wax",
+      fa: "اسلک واکس پارافینی",
+    },
+    desc: {
+      ru: "Смесовой парафиновый гач: побочный продукт процесса депарафинизации масел, состоящий из смеси твердых парафинов и остаточного масла. Используется в производстве свечей, спичек, бытовой химии и в качестве сырья для получения очищенного парафина.",
+      en: "Blended paraffin slack wax is a by-product of oil dewaxing, a mix of solid paraffins and residual oil. It is used in candles, matches, household chemicals and as feedstock for refined paraffin.",
+      tr: "Karışım parafin slack wax, yağların parafin giderme işleminin yan ürünüdür; katı parafinler ile artık yağın karışımıdır. Mum, kibrit, ev kimyasalları üretiminde ve rafine parafin hammaddesi olarak kullanılır.",
+      fa: "اسلک واکس پارافینی محصول جانبی فرآیند پارافین‌زدایی روغن‌هاست و از مخلوط پارافین‌های جامد و روغن باقی‌مانده تشکیل می‌شود. در تولید شمع، کبریت، مواد شوینده و به‌عنوان خوراک پارافین تصفیه‌شده کاربرد دارد.",
+    },
+  },
+  {
+    slug: "sulfuric-acid",
+    category: 2,
+    image: "/assets/products/sulfuric-acid.jpg",
+    specTable: {
+      headers: {
+        ru: ["Показатель", "Контактная улучшенная", "Техническая 1 сорт", "Техническая 2 сорт"],
+        en: ["Parameter", "Contact enhanced", "Industrial 1st grade", "Industrial 2nd grade"],
+        tr: ["Parametre", "Kontakt geliştirilmiş", "Teknik 1. sınıf", "Teknik 2. sınıf"],
+        fa: ["مشخصه", "تماسی بهبودیافته", "صنعتی درجه ۱", "صنعتی درجه ۲"],
+      },
+      rows: [
+        {
+          name: { ru: "Внешний вид", en: "Appearance", tr: "Görünüm", fa: "ظاهر" },
+          values: [notRated, notRated, notRated],
+        },
+        {
+          name: {
+            ru: "Массовая доля моногидрата (H2SO4), %, не менее",
+            en: "Mass fraction of monohydrate (H2SO4), %, min",
+            tr: "Monohidrat (H2SO4) kütle oranı, %, min",
+            fa: "کسر جرمی مونوهیدرات (H2SO4)، ٪، حداقل",
+          },
+          values: ["92,5-94,0", "≥ 92,5", "≥ 92,5"],
+        },
+        {
+          name: {
+            ru: "Массовая доля железа (Fe), %, не более",
+            en: "Mass fraction of iron (Fe), %, max",
+            tr: "Demir (Fe) kütle oranı, %, maks",
+            fa: "کسر جرمی آهن (Fe)، ٪، حداکثر",
+          },
+          values: ["0,006", "0,02", "0,1"],
+        },
+        {
+          name: {
+            ru: "Массовая доля остатка после прокаливания, %, не более",
+            en: "Mass fraction of residue on ignition, %, max",
+            tr: "Kalsinasyon kalıntısı kütle oranı, %, maks",
+            fa: "کسر جرمی باقی‌مانده پس از احتراق، ٪، حداکثر",
+          },
+          values: ["0,02", "0,05", notRated],
+        },
+        {
+          name: {
+            ru: "Массовая доля оксидов азота (в пересчёте на N2O3), %, не более",
+            en: "Mass fraction of nitrogen oxides (as N2O3), %, max",
+            tr: "Azot oksitleri (N2O3 cinsinden) kütle oranı, %, maks",
+            fa: "کسر جرمی اکسیدهای نیتروژن (بر حسب N2O3)، ٪، حداکثر",
+          },
+          values: ["0,00005", notRated, notRated],
+        },
+        {
+          name: {
+            ru: "Массовая доля нитросоединений, %, не более",
+            en: "Mass fraction of nitro-compounds, %, max",
+            tr: "Nitro bileşikleri kütle oranı, %, maks",
+            fa: "کسر جرمی ترکیبات نیترو، ٪، حداکثر",
+          },
+          values: [notRated, notRated, notRated],
+        },
+        {
+          name: {
+            ru: "Массовая доля мышьяка (As), %, не более",
+            en: "Mass fraction of arsenic (As), %, max",
+            tr: "Arsenik (As) kütle oranı, %, maks",
+            fa: "کسر جرمی آرسنیک (As)، ٪، حداکثر",
+          },
+          values: ["0,00008", notRated, notRated],
+        },
+      ],
+    },
+    name: {
+      ru: "Техническая серная кислота",
+      en: "Technical sulfuric acid",
+      tr: "Teknik sülfürik asit",
+      fa: "اسید سولفوریک صنعتی",
+    },
+    desc: {
+      ru: "Техническая серная кислота (H2SO4): одно из важнейших соединений в химической промышленности, используемое в производстве удобрений, обработке металлов и очистке нефтепродуктов.",
+      en: "Technical sulfuric acid (H2SO4) is one of the most important compounds in the chemical industry, used in fertilizer production, metal treatment and oil product purification.",
+      tr: "Teknik sülfürik asit (H2SO4), gübre üretiminde, metal işlemede ve petrol ürünlerinin arıtılmasında kullanılan kimya sanayisinin en önemli bileşiklerinden biridir.",
+      fa: "اسید سولفوریک صنعتی (H2SO4) یکی از مهم‌ترین ترکیبات صنایع شیمیایی است که در تولید کود، فرآوری فلزات و تصفیه فرآورده‌های نفتی به کار می‌رود.",
+    },
+  },
+  {
+    slug: "iodine",
+    category: 2,
+    image: "/assets/products/iodine.jpg",
+    pdfs: ["/assets/specs/iodine.pdf"],
+    name: {
+      ru: "Йод технический марки «А»",
+      en: "Technical iodine, grade A",
+      tr: "A sınıfı teknik iyot",
+      fa: "ید صنعتی درجه A",
+    },
+    desc: {
+      ru: "Технический йод марки «А» представляет собой кристаллическое вещество, широко применяемое в фармацевтике, химической промышленности и производстве высокотехнологичных материалов.",
+      en: "Technical iodine grade A is a crystalline substance widely used in pharmaceuticals, the chemical industry and high-tech materials production.",
+      tr: "A sınıfı teknik iyot; ilaç, kimya sanayisi ve yüksek teknoloji malzeme üretiminde yaygın olarak kullanılan kristal bir maddedir.",
+      fa: "ید صنعتی درجه A ماده‌ای بلوری است که به‌طور گسترده در داروسازی، صنایع شیمیایی و تولید مواد پیشرفته استفاده می‌شود.",
+    },
+  },
+  {
+    slug: "urea46",
+    category: 2,
+    image: "/assets/products/urea46.jpg",
+    pdfs: ["/assets/specs/urea46.pdf"],
+    name: {
+      ru: "Карбамид 46",
+      en: "Urea 46",
+      tr: "Üre 46",
+      fa: "اوره ۴۶",
+    },
+    desc: {
+      ru: "Карбамид (мочевина): высококонцентрированное азотное удобрение, широко используемое в сельском хозяйстве для повышения урожайности различных культур, а также в промышленности.",
+      en: "Urea is a highly concentrated nitrogen fertilizer, widely used in agriculture to increase crop yields, and in industry.",
+      tr: "Üre, tarımda ürün verimini artırmak için ve sanayide yaygın olarak kullanılan yüksek konsantrasyonlu bir azotlu gübredir.",
+      fa: "اوره کودی نیتروژنی با غلظت بالاست که به‌طور گسترده در کشاورزی برای افزایش عملکرد محصولات و نیز در صنعت استفاده می‌شود.",
+    },
+  },
+  {
+    slug: "sulfur",
+    category: 2,
+    image: "/assets/products/sulfur.jpg",
+    specTable: {
+      standard: "TDS 127.1-93",
+      headers: {
+        ru: ["Показатель", "Норма"],
+        en: ["Parameter", "Rate"],
+        tr: ["Parametre", "Norm"],
+        fa: ["مشخصه", "مقدار"],
+      },
+      rows: [
+        {
+          name: {
+            ru: "Массовая доля серы, %, не менее",
+            en: "Mass fraction of sulfur, %, min",
+            tr: "Kükürt kütle oranı, %, min",
+            fa: "کسر جرمی گوگرد، ٪، حداقل",
+          },
+          values: ["99,95"],
+        },
+        {
+          name: {
+            ru: "Массовая доля золы, %, не более",
+            en: "Mass fraction of ash, %, max",
+            tr: "Kül kütle oranı, %, maks",
+            fa: "کسر جرمی خاکستر، ٪، حداکثر",
+          },
+          values: ["0,03"],
+        },
+        {
+          name: {
+            ru: "Массовая доля органических веществ, %, не более",
+            en: "Mass fraction of organic matter, %, max",
+            tr: "Organik madde kütle oranı, %, maks",
+            fa: "کسر جرمی مواد آلی، ٪، حداکثر",
+          },
+          values: ["0,03"],
+        },
+        {
+          name: {
+            ru: "Массовая доля кислот в пересчёте на серную кислоту, %, не более",
+            en: "Mass fraction of acids as sulfuric acid, %, max",
+            tr: "Sülfürik asit cinsinden asit kütle oranı, %, maks",
+            fa: "کسر جرمی اسیدها بر حسب اسید سولفوریک، ٪، حداکثر",
+          },
+          values: ["0,003"],
+        },
+        {
+          name: {
+            ru: "Массовая доля влаги, %, не более",
+            en: "Mass fraction of moisture, %, max",
+            tr: "Nem kütle oranı, %, maks",
+            fa: "کسر جرمی رطوبت، ٪، حداکثر",
+          },
+          values: ["0,2"],
+        },
+        {
+          name: {
+            ru: "Механические загрязнения",
+            en: "Mechanical impurities",
+            tr: "Mekanik kirlilikler",
+            fa: "ناخالصی‌های مکانیکی",
+          },
+          values: [
+            {
+              ru: "не допускается",
+              en: "not allowed",
+              tr: "izin verilmez",
+              fa: "مجاز نیست",
+            },
+          ],
+        },
+        {
+          name: { ru: "Цвет", en: "Color", tr: "Renk", fa: "رنگ" },
+          values: [
+            {
+              ru: "ярко-жёлтый",
+              en: "bright yellow",
+              tr: "parlak sarı",
+              fa: "زرد روشن",
+            },
+          ],
+        },
+      ],
+      note: {
+        ru: "В комовой сере допускается повышение массовой доли влаги до 2% с пересчётом фактической массы партии на нормируемую влажность.",
+        en: "For lump sulfur, moisture content up to 2% is allowed, with the actual batch weight recalculated to the rated moisture.",
+        tr: "Parça kükürtte, parti ağırlığı norm neme göre yeniden hesaplanmak kaydıyla %2'ye kadar nem oranına izin verilir.",
+        fa: "در گوگرد کلوخه‌ای، رطوبت تا ۲٪ مجاز است و وزن واقعی محموله بر اساس رطوبت استاندارد بازمحاسبه می‌شود.",
+      },
+    },
+    name: {
+      ru: "Сера",
+      en: "Sulfur",
+      tr: "Kükürt",
+      fa: "گوگرد",
+    },
+    desc: {
+      ru: "Сера техническая: важный промышленный продукт, используемый в производстве серной кислоты, удобрений, резины, а также в бумажной и химической промышленности. Производитель: Государственный концерн «Туркменгаз».",
+      en: "Technical sulfur is an important industrial product used in the production of sulfuric acid, fertilizers and rubber, as well as in the paper and chemical industries. Producer: State Concern Turkmengaz.",
+      tr: "Teknik kükürt; sülfürik asit, gübre ve kauçuk üretiminde, ayrıca kağıt ve kimya sanayisinde kullanılan önemli bir endüstriyel üründür. Üretici: Türkmengaz Devlet Konserni.",
+      fa: "گوگرد صنعتی محصولی مهم است که در تولید اسید سولفوریک، کود و لاستیک و نیز در صنایع کاغذ و شیمیایی به کار می‌رود. تولیدکننده: شرکت دولتی ترکمن‌گاز.",
+    },
+  },
+  {
+    slug: "salt",
+    category: 2,
+    image: "/assets/products/salt.jpg",
+    pdfs: ["/assets/specs/salt.pdf"],
+    name: {
+      ru: "Хлорид натрия промышленного назначения",
+      en: "Industrial-grade sodium chloride",
+      tr: "Endüstriyel sodyum klorür",
+      fa: "کلرید سدیم صنعتی",
+    },
+    desc: {
+      ru: "Хлорид натрия промышленного назначения широко используется в химической промышленности, для производства соды, хлора и других химических веществ, а также в качестве противогололедного реагента.",
+      en: "Industrial-grade sodium chloride is widely used in the chemical industry for producing soda, chlorine and other chemicals, and as a de-icing agent.",
+      tr: "Endüstriyel sodyum klorür; soda, klor ve diğer kimyasalların üretiminde ve buz çözücü olarak kimya sanayisinde yaygın biçimde kullanılır.",
+      fa: "کلرید سدیم صنعتی به‌طور گسترده در صنایع شیمیایی برای تولید سودا، کلر و دیگر مواد شیمیایی و نیز به‌عنوان ماده یخ‌زدا استفاده می‌شود.",
+    },
+  },
+  {
+    slug: "cement",
+    category: 3,
+    image: "/assets/products/cement-1.jpg",
+    gallery: ["/assets/products/cement-2.jpg", "/assets/products/cement-3.jpg"],
+    specImage: "/assets/products/cement-analiz.jpg",
+    name: {
+      ru: "Белый цемент",
+      en: "White cement",
+      tr: "Beyaz çimento",
+      fa: "سیمان سفید",
+    },
+    desc: {
+      ru: "Белый цемент: специальный вид цемента с высокой белизной, применяемый в декоративном строительстве, производстве архитектурного бетона, фасадных плиток, мраморной крошки и других отделочных материалов.",
+      en: "White cement is a specialty cement with high whiteness, used in decorative construction, architectural concrete, facade tiles, marble chips and other finishing materials.",
+      tr: "Beyaz çimento; dekoratif yapılarda, mimari beton, cephe karoları, mermer pirinci ve diğer kaplama malzemelerinin üretiminde kullanılan yüksek beyazlıkta özel bir çimentodur.",
+      fa: "سیمان سفید نوعی سیمان ویژه با سفیدی بالاست که در ساخت‌وساز تزئینی، بتن معماری، کاشی نما، سنگ‌ریزه مرمری و دیگر مصالح نازک‌کاری به کار می‌رود.",
+    },
+  },
+];
+
+export function productBySlug(slug: string): Product | undefined {
+  return PRODUCTS.find((p) => p.slug === slug);
+}
+
+export function productsInCategory(category: number): Product[] {
+  return PRODUCTS.filter((p) => p.category === category);
+}
+
+export function specValue(v: SpecValue, lang: Locale): string {
+  return typeof v === "string" ? v : v[lang];
+}
