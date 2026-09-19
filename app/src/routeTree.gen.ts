@@ -11,9 +11,9 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
-import { Route as FactoriesRouteImport } from './routes/factories'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as FactoriesIndexRouteImport } from './routes/factories.index'
 import { Route as ProductsSlugRouteImport } from './routes/products.$slug'
 import { Route as FactoriesSlugRouteImport } from './routes/factories.$slug'
 
@@ -27,11 +27,6 @@ const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
   path: '/robots.txt',
   getParentRoute: () => rootRouteImport,
 } as any)
-const FactoriesRoute = FactoriesRouteImport.update({
-  id: '/factories',
-  path: '/factories',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const AppRoute = AppRouteImport.update({
   id: '/app',
   path: '/app',
@@ -42,82 +37,88 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FactoriesIndexRoute = FactoriesIndexRouteImport.update({
+  id: '/factories/',
+  path: '/factories/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProductsSlugRoute = ProductsSlugRouteImport.update({
   id: '/products/$slug',
   path: '/products/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FactoriesSlugRoute = FactoriesSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => FactoriesRoute,
+  id: '/factories/$slug',
+  path: '/factories/$slug',
+  getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app': typeof AppRoute
-  '/factories': typeof FactoriesRouteWithChildren
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/factories/$slug': typeof FactoriesSlugRoute
   '/products/$slug': typeof ProductsSlugRoute
+  '/factories/': typeof FactoriesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/app': typeof AppRoute
-  '/factories': typeof FactoriesRouteWithChildren
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/factories/$slug': typeof FactoriesSlugRoute
   '/products/$slug': typeof ProductsSlugRoute
+  '/factories': typeof FactoriesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/app': typeof AppRoute
-  '/factories': typeof FactoriesRouteWithChildren
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/factories/$slug': typeof FactoriesSlugRoute
   '/products/$slug': typeof ProductsSlugRoute
+  '/factories/': typeof FactoriesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/app'
-    | '/factories'
     | '/robots.txt'
     | '/sitemap.xml'
     | '/factories/$slug'
     | '/products/$slug'
+    | '/factories/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/app'
-    | '/factories'
     | '/robots.txt'
     | '/sitemap.xml'
     | '/factories/$slug'
     | '/products/$slug'
+    | '/factories'
   id:
     | '__root__'
     | '/'
     | '/app'
-    | '/factories'
     | '/robots.txt'
     | '/sitemap.xml'
     | '/factories/$slug'
     | '/products/$slug'
+    | '/factories/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AppRoute: typeof AppRoute
-  FactoriesRoute: typeof FactoriesRouteWithChildren
   RobotsDottxtRoute: typeof RobotsDottxtRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  FactoriesSlugRoute: typeof FactoriesSlugRoute
   ProductsSlugRoute: typeof ProductsSlugRoute
+  FactoriesIndexRoute: typeof FactoriesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -136,13 +137,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RobotsDottxtRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/factories': {
-      id: '/factories'
-      path: '/factories'
-      fullPath: '/factories'
-      preLoaderRoute: typeof FactoriesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/app': {
       id: '/app'
       path: '/app'
@@ -157,6 +151,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/factories/': {
+      id: '/factories/'
+      path: '/factories'
+      fullPath: '/factories/'
+      preLoaderRoute: typeof FactoriesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/products/$slug': {
       id: '/products/$slug'
       path: '/products/$slug'
@@ -166,33 +167,22 @@ declare module '@tanstack/react-router' {
     }
     '/factories/$slug': {
       id: '/factories/$slug'
-      path: '/$slug'
+      path: '/factories/$slug'
       fullPath: '/factories/$slug'
       preLoaderRoute: typeof FactoriesSlugRouteImport
-      parentRoute: typeof FactoriesRoute
+      parentRoute: typeof rootRouteImport
     }
   }
 }
 
-interface FactoriesRouteChildren {
-  FactoriesSlugRoute: typeof FactoriesSlugRoute
-}
-
-const FactoriesRouteChildren: FactoriesRouteChildren = {
-  FactoriesSlugRoute: FactoriesSlugRoute,
-}
-
-const FactoriesRouteWithChildren = FactoriesRoute._addFileChildren(
-  FactoriesRouteChildren,
-)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AppRoute: AppRoute,
-  FactoriesRoute: FactoriesRouteWithChildren,
   RobotsDottxtRoute: RobotsDottxtRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  FactoriesSlugRoute: FactoriesSlugRoute,
   ProductsSlugRoute: ProductsSlugRoute,
+  FactoriesIndexRoute: FactoriesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

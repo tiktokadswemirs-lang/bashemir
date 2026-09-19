@@ -5,7 +5,7 @@ import { SiteHeader } from "@/components/site/site-header";
 import { dictionaries, resolveLocale } from "@/i18n";
 import { FACTORIES } from "@/factories";
 
-export const Route = createFileRoute("/factories")({
+export const Route = createFileRoute("/factories/")({
   validateSearch: (
     search: Record<string, unknown>,
   ): { lang?: "ru" | "en" | "tr" | "fa" } => ({
