@@ -11,7 +11,7 @@ const MENU: Record<Locale, string> = { ru: "Меню", en: "Menu", tr: "Menü", 
 const SOCIAL = [
   { icon: "whatsapp", href: "https://wa.me/998939090341", label: { ru: "WhatsApp", en: "WhatsApp", tr: "WhatsApp", fa: "واتس‌اپ" } },
   { icon: "whatsapp", href: "https://whatsapp.com/channel/0029VbCnEhlDuMRk9CQcyE10", label: { ru: "WhatsApp канал", en: "WhatsApp channel", tr: "WhatsApp kanalı", fa: "کانال واتس‌اپ" } },
-  { icon: "telegram", href: "https://t.me/bashemir", label: { ru: "Telegram", en: "Telegram", tr: "Telegram", fa: "تلگرام" } },
+  { icon: "telegram", href: "https://t.me/bashemir", label: { ru: "Telegram канал", en: "Telegram channel", tr: "Telegram kanalı", fa: "کانال تلگرام" } },
   { icon: "instagram", href: "https://www.instagram.com/bashemir5", label: { ru: "Instagram", en: "Instagram", tr: "Instagram", fa: "اینستاگرام" } },
   { icon: "tiktok", href: "https://www.tiktok.com/@bashemir5", label: { ru: "TikTok", en: "TikTok", tr: "TikTok", fa: "تیک‌تاک" } },
   { icon: "linkedin", href: "https://www.linkedin.com/company/individual-enterprise-bash-emir/", label: { ru: "LinkedIn", en: "LinkedIn", tr: "LinkedIn", fa: "لینکدین" } },
