@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { useReveals, useSmoothScroll } from "@/components/site/hooks";
-import { LangMenu } from "@/components/site/nav-lang";
+import { SiteHeader } from "@/components/site/site-header";
 import { dictionaries, resolveLocale } from "@/i18n";
 import { productBySlug, specValue } from "@/products";
 
@@ -40,25 +40,7 @@ function ProductPage() {
 
   return (
     <main className="be-page pp">
-      <header className="be-nav">
-        <div className="be-nav__inner">
-          <Link className="be-nav__brand" search={{ lang }} to="/">
-            <img alt="" src="/assets/brand/emblem.png" />
-            <span>BASH EMIR</span>
-          </Link>
-          <nav className="be-nav__links" aria-label="Catalog">
-            <Link
-              className="be-nav__link"
-              hash="products"
-              search={{ lang }}
-              to="/"
-            >
-              {d.productUi.allProducts}
-            </Link>
-          </nav>
-          <LangMenu lang={lang} page="product" slug={slug} />
-        </div>
-      </header>
+      <SiteHeader lang={lang} page="product" slug={slug} />
 
       <article className="be-container pp__wrap">
         <div className="pp__head">

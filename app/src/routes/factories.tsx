@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { useReveals, useSmoothScroll } from "@/components/site/hooks";
-import { LangMenu } from "@/components/site/nav-lang";
+import { SiteHeader } from "@/components/site/site-header";
 import { dictionaries, resolveLocale } from "@/i18n";
 import { FACTORIES } from "@/factories";
 
@@ -22,15 +22,7 @@ function FactoriesPage() {
 
   return (
     <main className="be-page pp">
-      <header className="be-nav">
-        <div className="be-nav__inner">
-          <Link className="be-nav__brand" search={{ lang }} to="/">
-            <img alt="" src="/assets/brand/emblem.png" />
-            <span>BASH EMIR</span>
-          </Link>
-          <LangMenu lang={lang} page="factories" />
-        </div>
-      </header>
+      <SiteHeader lang={lang} page="factories" />
 
       <article className="be-container pp__wrap">
         <div className="pp__head">

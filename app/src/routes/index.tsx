@@ -1,30 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState, type ReactNode } from "react";
+import { useState } from "react";
 
 import { FrameScrub } from "@/components/site/frame-scrub";
-import {
-  smoothScrollTo,
-  useReveals,
-  useSmoothScroll,
-} from "@/components/site/hooks";
-import { LangMenu } from "@/components/site/nav-lang";
+import { useReveals, useSmoothScroll } from "@/components/site/hooks";
+import { SiteHeader } from "@/components/site/site-header";
 import { dictionaries, resolveLocale } from "@/i18n";
 import { productsInCategory } from "@/products";
-
-function NavLink({ id, children }: { id: string; children: ReactNode }) {
-  return (
-    <a
-      className="be-nav__link"
-      href={`#${id}`}
-      onClick={(e) => {
-        e.preventDefault();
-        smoothScrollTo(id);
-      }}
-    >
-      {children}
-    </a>
-  );
-}
 
 export const Route = createFileRoute("/")({
   // Locale travels in ?lang= so the server renders the right language and the
@@ -155,30 +136,7 @@ function Index() {
 
   return (
     <main className="be-page">
-      <header className="be-nav">
-        <div className="be-nav__inner">
-          <a
-            className="be-nav__brand"
-            href="#top"
-            onClick={(e) => {
-              e.preventDefault();
-              smoothScrollTo("top");
-            }}
-          >
-            <img alt="" src="/assets/brand/emblem.png" />
-            <span>BASH EMIR</span>
-          </a>
-          <nav className="be-nav__links" aria-label="Sections">
-            <NavLink id="about">{d.nav.about}</NavLink>
-            <NavLink id="products">{d.nav.products}</NavLink>
-            <NavLink id="delivery">{d.nav.delivery}</NavLink>
-            <NavLink id="exchange">{d.nav.exchange}</NavLink>
-            <NavLink id="legal">{d.nav.legal}</NavLink>
-            <NavLink id="contacts">{d.nav.contacts}</NavLink>
-          </nav>
-          <LangMenu lang={lang} />
-        </div>
-      </header>
+      <SiteHeader lang={lang} />
 
       <div id="top">
         <FrameScrub ctaLabel={d.ctaDiscuss} lang={lang} />
@@ -400,10 +358,7 @@ function Index() {
         <div className="be-container be-footer__inner">
           <div>
             <div className="be-footer__brand">
-              <img alt="" src="/assets/brand/emblem.png" />
-              <span style={{ fontWeight: 800, letterSpacing: "0.04em" }}>
-                BASH EMIR
-              </span>
+              <img alt="Bash Emir" className="be-footer__logo" src="/assets/brand/logo-dark.png" />
             </div>
             <p className="be-footer__tagline" style={{ marginTop: "0.8rem" }}>
               {d.footer.tagline}

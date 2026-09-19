@@ -2234,3 +2234,110 @@ body {
     gap: 1.1rem;
   }
 }
+
+/* ---------- header logo, burger, mobile drawer ---------- */
+
+.be-nav__inner {
+  position: relative;
+  z-index: 1;
+}
+
+.be-nav__logo {
+  height: 34px;
+  width: auto;
+  display: block;
+  border-radius: 0;
+}
+
+.be-footer__logo {
+  height: 44px;
+  width: auto;
+  display: block;
+}
+
+.be-burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  padding: 0 9px;
+  margin-inline-start: 0.4rem;
+  background: transparent;
+  border: 1px solid var(--be-hairline);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.be-burger span {
+  display: block;
+  height: 2px;
+  background: var(--be-ink);
+  border-radius: 2px;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.2s ease;
+}
+
+.be-burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.be-burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.be-burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 899px) {
+  .be-burger {
+    display: flex;
+  }
+}
+
+.be-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: auto;
+  background: color-mix(in srgb, var(--be-bg) 94%, transparent);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  padding: 6.5rem 1.5rem 2rem;
+  overflow-y: auto;
+  animation: be-drawer-in 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes be-drawer-in {
+  from { transform: translateY(-3%); }
+  to { transform: translateY(0); }
+}
+
+.be-drawer__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.be-drawer__link {
+  padding: 1rem 0.25rem;
+  font-size: 1.55rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--be-ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--be-hairline);
+  animation: be-rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.be-drawer__link--sub {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--be-accent);
+  border-bottom: 0;
+  margin-top: 0.5rem;
+}
+
+@keyframes be-rise {
+  from { transform: translateY(18px); }
+  to { transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .be-drawer,
+  .be-drawer__link {
+    animation: none;
+  }
+}
