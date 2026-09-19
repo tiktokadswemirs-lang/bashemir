@@ -126,9 +126,23 @@ export default defineConfig(({ command, mode }) => {
           "sulfur",
           "salt",
           "cement",
-        ].map((p) => ({
-          path: p.startsWith("/") ? p : `/products/${p}`,
-        })),
+        ]
+          .map((p) => ({ path: p.startsWith("/") ? p : `/products/${p}` }))
+          .concat(
+            [
+              "marykerbamid",
+              "maryazot",
+              "himzavod-niyazov",
+              "gorno-rundyy-kompleks",
+              "garabogazkarbamid",
+              "tejenkarbamid",
+              "yodnyyzavod-bereket",
+              "guvlyduz",
+              "polimernyy-zavod",
+              "benzin-gaz-ahal",
+              "neft-zavod",
+            ].map((s) => ({ path: `/factories/${s}` })),
+          ),
       }),
       higgsfieldDesignInspectorVitePlugin(designInspectorEnabled),
       react({

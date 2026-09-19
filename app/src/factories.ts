@@ -1,113 +1,166 @@
 /**
  * Factories of Turkmenistan, mirrored from the original bashemir.com
  * /factories page (names verbatim in RU, translated to EN/TR/FA; photos are
- * the company's own files in /assets/factories).
+ * the company's own files in /assets/factories). Descriptions state only
+ * what the plant's name and location say; `products` links to our catalog.
  */
 import type { Locale } from "@/i18n";
 
+type L10n = Record<Locale, string>;
+
 export interface Factory {
+  slug: string;
   image: string;
-  name: Record<Locale, string>;
+  name: L10n;
+  desc: L10n;
+  products: string[];
 }
+
+export const FACTORY_UI = {
+  all: { ru: "Все заводы", en: "All factories", tr: "Tüm fabrikalar", fa: "همه کارخانه‌ها" },
+  products: {
+    ru: "Продукция в нашем каталоге",
+    en: "Products in our catalog",
+    tr: "Kataloğumuzdaki ürünler",
+    fa: "محصولات در کاتالوگ ما",
+  },
+} satisfies Record<string, L10n>;
 
 export const FACTORIES: Factory[] = [
   {
+    slug: "marykerbamid",
     image: "/assets/factories/marykerbamid.jpg",
-    name: {
-      ru: "Завод «Марыкарбамид»",
-      en: "Marykarbamid plant",
-      tr: "Marykarbamid fabrikası",
-      fa: "کارخانه ماری‌کاربامید",
+    name: { ru: "Завод «Марыкарбамид»", en: "Marykarbamid plant", tr: "Marykarbamid fabrikası", fa: "کارخانه ماری‌کاربامید" },
+    desc: {
+      ru: "Карбамидный завод в Марыйском велаяте: азотные удобрения из природного газа.",
+      en: "Urea plant in Mary province: nitrogen fertilizers produced from natural gas.",
+      tr: "Mary vilayetinde üre fabrikası: doğal gazdan azotlu gübre üretimi.",
+      fa: "کارخانه اوره در استان ماری: کودهای نیتروژنی از گاز طبیعی.",
     },
+    products: ["urea46"],
   },
   {
+    slug: "maryazot",
     image: "/assets/factories/maryazot.jpg",
-    name: {
-      ru: "Производственное объединение «Марыазот»",
-      en: "Maryazot production association",
-      tr: "Maryazot üretim birliği",
-      fa: "مجتمع تولیدی ماری‌آزوت",
+    name: { ru: "Производственное объединение «Марыазот»", en: "Maryazot production association", tr: "Maryazot üretim birliği", fa: "مجتمع تولیدی ماری‌آزوت" },
+    desc: {
+      ru: "Объединение азотной промышленности в Мары: аммиак и карбамид.",
+      en: "Nitrogen industry association in Mary: ammonia and urea.",
+      tr: "Mary şehrinde azot sanayisi birliği: amonyak ve üre.",
+      fa: "مجتمع صنایع نیتروژن در ماری: آمونیاک و اوره.",
     },
+    products: ["urea46"],
   },
   {
+    slug: "himzavod-niyazov",
     image: "/assets/factories/himzavod-niyazov.jpg",
-    name: {
-      ru: "Туркменабатский химический завод имени С.А.Ниязова",
-      en: "Turkmenabat chemical plant named after S.A.Niyazov",
-      tr: "S.A.Niyazov adına Türkmenabat kimya fabrikası",
-      fa: "کارخانه شیمیایی ترکمن‌آباد به نام نیازوف",
+    name: { ru: "Туркменабатский химический завод имени С.А.Ниязова", en: "Turkmenabat chemical plant named after S.A.Niyazov", tr: "S.A.Niyazov adına Türkmenabat kimya fabrikası", fa: "کارخانه شیمیایی ترکمن‌آباد به نام نیازوف" },
+    desc: {
+      ru: "Химический завод в Туркменабате: серная кислота и фосфорные удобрения.",
+      en: "Chemical plant in Turkmenabat: sulfuric acid and phosphate fertilizers.",
+      tr: "Türkmenabat kimya fabrikası: sülfürik asit ve fosfatlı gübreler.",
+      fa: "کارخانه شیمیایی در ترکمن‌آباد: اسید سولفوریک و کودهای فسفاته.",
     },
+    products: ["sulfuric-acid"],
   },
   {
+    slug: "gorno-rundyy-kompleks",
     image: "/assets/factories/gorno-rundyy-kompleks.jpg",
-    name: {
-      ru: "Гарлыкский калийный горно-рудный комплекс",
-      en: "Garlyk potash mining complex",
-      tr: "Garlyk potas madencilik kompleksi",
-      fa: "مجتمع معدنی پتاس گارلیک",
+    name: { ru: "Гарлыкский калийный горно-рудный комплекс", en: "Garlyk potash mining complex", tr: "Garlyk potas madencilik kompleksi", fa: "مجتمع معدنی پتاس گارلیک" },
+    desc: {
+      ru: "Горно-обогатительный комплекс по добыче и переработке калийных солей в Гарлыке, Лебапский велаят.",
+      en: "Mining and processing complex for potash salts in Garlyk, Lebap province.",
+      tr: "Lebap vilayeti Garlyk bölgesinde potas tuzu çıkarma ve işleme kompleksi.",
+      fa: "مجتمع استخراج و فرآوری نمک‌های پتاس در گارلیک، استان لباب.",
     },
+    products: [],
   },
   {
+    slug: "garabogazkarbamid",
     image: "/assets/factories/garabogazkarbamid.jpg",
-    name: {
-      ru: "Завод «Гарабогазкарбамид»",
-      en: "Garabogazkarbamid plant",
-      tr: "Garabogazkarbamid fabrikası",
-      fa: "کارخانه قره‌بغازکاربامید",
+    name: { ru: "Завод «Гарабогазкарбамид»", en: "Garabogazkarbamid plant", tr: "Garabogazkarbamid fabrikası", fa: "کارخانه قره‌بغازکاربامید" },
+    desc: {
+      ru: "Карбамидный завод в Гарабогазе на побережье Каспийского моря.",
+      en: "Urea plant in Garabogaz on the Caspian Sea coast.",
+      tr: "Hazar Denizi kıyısındaki Garabogaz bölgesinde üre fabrikası.",
+      fa: "کارخانه اوره در قره‌بغاز در ساحل دریای خزر.",
     },
+    products: ["urea46"],
   },
   {
+    slug: "tejenkarbamid",
     image: "/assets/factories/tejenkarbamid.jpg",
-    name: {
-      ru: "Завод «Тедженкарбамид»",
-      en: "Tejenkarbamid plant",
-      tr: "Tejenkarbamid fabrikası",
-      fa: "کارخانه تجن‌کاربامید",
+    name: { ru: "Завод «Тедженкарбамид»", en: "Tejenkarbamid plant", tr: "Tejenkarbamid fabrikası", fa: "کارخانه تجن‌کاربامید" },
+    desc: {
+      ru: "Карбамидный завод в Теджене, Ахалский велаят.",
+      en: "Urea plant in Tejen, Ahal province.",
+      tr: "Ahal vilayeti Tejen şehrinde üre fabrikası.",
+      fa: "کارخانه اوره در تجن، استان آخال.",
     },
+    products: ["urea46"],
   },
   {
+    slug: "yodnyyzavod-bereket",
     image: "/assets/factories/yodnyyzavod-bereket.jpg",
-    name: {
-      ru: "Йодный завод «Берекет»",
-      en: "Bereket iodine plant",
-      tr: "Bereket iyot fabrikası",
-      fa: "کارخانه ید برکت",
+    name: { ru: "Йодный завод «Берекет»", en: "Bereket iodine plant", tr: "Bereket iyot fabrikası", fa: "کارخانه ید برکت" },
+    desc: {
+      ru: "Йодный завод в Берекете, Балканский велаят: технический йод.",
+      en: "Iodine plant in Bereket, Balkan province: technical iodine.",
+      tr: "Balkan vilayeti Bereket şehrinde iyot fabrikası: teknik iyot.",
+      fa: "کارخانه ید در برکت، استان بالکان: ید صنعتی.",
     },
+    products: ["iodine"],
   },
   {
+    slug: "guvlyduz",
     image: "/assets/factories/guvlyduz.jpg",
-    name: {
-      ru: "Комбинат «Гувлыдуз»",
-      en: "Guvlyduz works",
-      tr: "Guvlyduz kombinası",
-      fa: "مجتمع گوولی‌دوز",
+    name: { ru: "Комбинат «Гувлыдуз»", en: "Guvlyduz works", tr: "Guvlyduz kombinası", fa: "مجتمع گوولی‌دوز" },
+    desc: {
+      ru: "Комбинат по добыче и переработке поваренной соли в Гувлы, Балканский велаят.",
+      en: "Salt mining and processing works in Guvly, Balkan province.",
+      tr: "Balkan vilayeti Guvly bölgesinde tuz çıkarma ve işleme kombinası.",
+      fa: "مجتمع استخراج و فرآوری نمک در گوولی، استان بالکان.",
     },
+    products: ["salt"],
   },
   {
+    slug: "polimernyy-zavod",
     image: "/assets/factories/polimernyy-zavod.jpg",
-    name: {
-      ru: "Киянлинский полимерный завод",
-      en: "Kiyanly polymer plant",
-      tr: "Kiyanly polimer fabrikası",
-      fa: "کارخانه پلیمر کیانلی",
+    name: { ru: "Киянлинский полимерный завод", en: "Kiyanly polymer plant", tr: "Kiyanly polimer fabrikası", fa: "کارخانه پلیمر کیانلی" },
+    desc: {
+      ru: "Газохимический комплекс в Киянлы: полиэтилен и полипропилен из природного газа.",
+      en: "Gas-chemical complex in Kiyanly: polyethylene and polypropylene from natural gas.",
+      tr: "Kiyanly gaz-kimya kompleksi: doğal gazdan polietilen ve polipropilen.",
+      fa: "مجتمع گازشیمی در کیانلی: پلی‌اتیلن و پلی‌پروپیلن از گاز طبیعی.",
     },
+    products: [],
   },
   {
+    slug: "benzin-gaz-ahal",
     image: "/assets/factories/benzin-gaz-ahal.jpg",
-    name: {
-      ru: "Завод по производству бензина из газа в Ахале",
-      en: "Ahal gas-to-gasoline plant",
-      tr: "Ahal doğalgazdan benzin fabrikası",
-      fa: "کارخانه تولید بنزین از گاز در آخال",
+    name: { ru: "Завод по производству бензина из газа в Ахале", en: "Ahal gas-to-gasoline plant", tr: "Ahal doğalgazdan benzin fabrikası", fa: "کارخانه تولید بنزین از گاز در آخال" },
+    desc: {
+      ru: "Завод в Ахалском велаяте: синтетический бензин ECO 93 из природного газа по технологии GTG.",
+      en: "Plant in Ahal province: synthetic ECO 93 gasoline from natural gas via GTG technology.",
+      tr: "Ahal vilayetinde fabrika: GTG teknolojisiyle doğal gazdan sentetik ECO 93 benzin.",
+      fa: "کارخانه در استان آخال: بنزین سنتزی ECO 93 از گاز طبیعی با فناوری GTG.",
     },
+    products: ["eco93"],
   },
   {
+    slug: "neft-zavod",
     image: "/assets/factories/neft-zavod.jpg",
-    name: {
-      ru: "Сейдинский нефтеперерабатывающий завод",
-      en: "Seydi oil refinery",
-      tr: "Seydi petrol rafinerisi",
-      fa: "پالایشگاه نفت سیدی",
+    name: { ru: "Сейдинский нефтеперерабатывающий завод", en: "Seydi oil refinery", tr: "Seydi petrol rafinerisi", fa: "پالایشگاه نفت سیدی" },
+    desc: {
+      ru: "Нефтеперерабатывающий завод в Сейди, Лебапский велаят: дизельное топливо, мазут, битум, нефтяной кокс.",
+      en: "Oil refinery in Seydi, Lebap province: diesel fuel, fuel oil, bitumen, petroleum coke.",
+      tr: "Lebap vilayeti Seydi petrol rafinerisi: dizel, fuel oil, bitüm, petrol koku.",
+      fa: "پالایشگاه نفت در سیدی، استان لباب: گازوئیل، نفت کوره، قیر، کک نفتی.",
     },
+    products: ["diesel", "lsfo", "bitumen", "petcoke"],
   },
 ];
+
+export function factoryBySlug(slug: string): Factory | undefined {
+  return FACTORIES.find((f) => f.slug === slug);
+}

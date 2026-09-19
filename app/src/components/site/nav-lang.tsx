@@ -38,7 +38,7 @@ export function LangMenu({
   slug,
 }: {
   lang: Locale;
-  page?: "home" | "product" | "factories";
+  page?: "home" | "product" | "factories" | "factory";
   slug?: string;
 }) {
   const [open, setOpen] = useState(false);
@@ -93,6 +93,13 @@ export function LangMenu({
                   params={{ slug }}
                   to="/products/$slug"
                 >
+                  {NAMES[l.code]}
+                </Link>
+              );
+            }
+            if (page === "factory" && slug) {
+              return (
+                <Link key={l.code} {...shared} params={{ slug }} to="/factories/$slug">
                   {NAMES[l.code]}
                 </Link>
               );

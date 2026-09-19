@@ -37,10 +37,16 @@ function FactoriesPage() {
 
         <div className="fc__grid" data-reveal="">
           {FACTORIES.map((f) => (
-            <figure className="fc-card" key={f.image}>
+            <Link
+              className="fc-card"
+              key={f.slug}
+              params={{ slug: f.slug }}
+              search={{ lang }}
+              to="/factories/$slug"
+            >
               <img alt={f.name[lang]} loading="lazy" src={f.image} />
               <figcaption>{f.name[lang]}</figcaption>
-            </figure>
+            </Link>
           ))}
         </div>
       </article>

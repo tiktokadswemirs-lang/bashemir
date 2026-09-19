@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import { FrameScrub } from "@/components/site/frame-scrub";
 import { useReveals, useSmoothScroll } from "@/components/site/hooks";
-import { SiteHeader } from "@/components/site/site-header";
+import { SiteHeader, SocialLinks } from "@/components/site/site-header";
 import { dictionaries, resolveLocale } from "@/i18n";
 import { productsInCategory } from "@/products";
 
@@ -369,37 +369,7 @@ function Index() {
           </div>
           <div className="be-footer__social">
             <span className="be-footer__social-title">{d.footer.followTitle}</span>
-            <a href="https://t.me/bashemir" rel="noopener noreferrer" target="_blank">
-              Telegram
-            </a>
-            <a
-              href="https://whatsapp.com/channel/0029VbCnEhlDuMRk9CQcyE10"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              WhatsApp
-            </a>
-            <a
-              href="https://www.instagram.com/bashemir5"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              Instagram
-            </a>
-            <a
-              href="https://www.tiktok.com/@bashemir5"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              TikTok
-            </a>
-            <a
-              href="https://www.linkedin.com/company/individual-enterprise-bash-emir/"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              LinkedIn
-            </a>
+            <SocialLinks labels lang={lang} />
           </div>
         </div>
       </footer>

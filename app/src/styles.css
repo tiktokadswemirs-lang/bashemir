@@ -554,7 +554,7 @@ body {
 .fs__stage {
   position: sticky;
   top: 0;
-  height: 100svh;
+  height: 100lvh;
   overflow: hidden;
 }
 
@@ -587,7 +587,7 @@ body {
 .fs__chapters {
   position: relative;
   z-index: 1;
-  margin-top: -100svh;
+  margin-top: -100lvh;
   display: flex;
   flex-direction: column;
 }
@@ -2340,4 +2340,56 @@ body {
   .be-drawer__link {
     animation: none;
   }
+}
+
+/* ---------- social icons (footer + drawer) ---------- */
+
+.be-social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.be-social a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-width: 42px;
+  height: 42px;
+  padding: 0 0.7rem;
+  border: 1px solid var(--be-hairline);
+  border-radius: 999px;
+  color: var(--be-ink);
+  text-decoration: none;
+  font-size: 0.8125rem;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.be-social a:hover {
+  border-color: var(--be-accent);
+  transform: translateY(-2px);
+}
+
+.be-social img {
+  width: 18px;
+  height: 18px;
+  filter: invert(1);
+  opacity: 0.9;
+}
+
+.be-social--labels {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.be-social--labels a {
+  border: 0;
+  height: auto;
+  padding: 0.2rem 0;
+}
+
+.be-drawer__social {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--be-hairline);
 }
