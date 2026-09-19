@@ -2393,3 +2393,9 @@ body {
   padding-top: 1.5rem;
   border-top: 1px solid var(--be-hairline);
 }
+
+.pp__desc--body {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: var(--be-muted);
+}
