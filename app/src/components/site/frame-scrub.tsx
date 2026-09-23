@@ -16,7 +16,7 @@ import { dictionaries, type Chapter, type Locale } from "@/i18n";
 export const FRAME_COUNT = 180;
 
 function framePath(index: number, mobile: boolean): string {
-  return `/assets/world/${mobile ? "m" : "d"}/f-${String(index + 1).padStart(4, "0")}.jpg`;
+  return `/assets/world/${mobile ? "m" : "d"}/f-${String(index + 1).padStart(4, "0")}.webp`;
 }
 
 interface ChapterSlot {
@@ -93,15 +93,22 @@ export function FrameScrub({ lang, ctaLabel }: { lang: Locale; ctaLabel: string 
       return img;
     };
 
-    // Progressive preload: sequential order with limited concurrency, so the
-    // whole strip is cached within seconds without starving the first frames.
-    let nextToLoad = 0;
+    // Playhead-first preload: always fetch the nearest unrequested frame ahead
+    // of the current scroll position (then behind it), 6 at a time, so fast
+    // scrolling never runs past the loaded region for long.
+    let playhead = 0;
     let inFlight = 0;
+    const nextToRequest = (): number => {
+      for (let i = playhead; i < FRAME_COUNT; i += step) if (!images[i]) return i;
+      for (let i = playhead - step; i >= 0; i -= step) if (!images[i]) return i;
+      return -1;
+    };
     const pump = () => {
       if (disposed) return;
-      while (inFlight < 6 && nextToLoad < FRAME_COUNT) {
-        const img = ensure(nextToLoad);
-        nextToLoad += step;
+      while (inFlight < 6) {
+        const i = nextToRequest();
+        if (i < 0) return;
+        const img = ensure(i);
         if (img.complete) continue;
         inFlight += 1;
         const done = () => {
@@ -160,9 +167,10 @@ export function FrameScrub({ lang, ctaLabel }: { lang: Locale; ctaLabel: string 
         FRAME_COUNT - 1,
         Math.round((progress * (FRAME_COUNT - 1)) / step) * step,
       );
-      // Warm decode just around the playhead.
-      ensure(target);
-      ensure(Math.min(FRAME_COUNT - 1, target + 3 * step));
+      if (target !== playhead) {
+        playhead = target;
+        pump();
+      }
       const idx = images[target]?.complete && images[target]!.naturalWidth
         ? target
         : nearestReady(target);

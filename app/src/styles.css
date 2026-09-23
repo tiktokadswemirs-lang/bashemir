@@ -343,13 +343,19 @@ body {
 }
 
 .be-nav__brand img {
+  width: auto;
+  height: 34px;
+  display: block;
+}
+
+.be-nav__brand-old-emblem {
   width: 30px;
   height: 30px;
   display: block;
   border-radius: 6px;
 }
 
-.be-footer__brand img {
+.be-footer__brand-old-emblem {
   border-radius: 5px;
 }
 
@@ -2031,7 +2037,7 @@ body {
   gap: 0.8rem;
 }
 
-.be-footer__brand img {
+.be-footer__brand-old-emblem {
   width: 26px;
   height: 26px;
 }
@@ -2417,5 +2423,24 @@ body {
   }
   .be-langdd {
     margin-inline-start: auto;
+  }
+}
+
+/* contacts: never wider than the phone screen */
+.be-contacts__grid > *,
+.be-channel__value {
+  min-width: 0;
+}
+
+@media (max-width: 600px) {
+  .be-channel {
+    flex-wrap: wrap;
+    gap: 0.35rem 1rem;
+  }
+  .be-channel__label {
+    width: 100%;
+  }
+  .be-channel__value {
+    overflow-wrap: anywhere;
   }
 }
