@@ -74,6 +74,8 @@ export function FrameScrub({ lang, ctaLabel }: { lang: Locale; ctaLabel: string 
     if (!ctx) return;
 
     const mobile = window.matchMedia("(max-width: 768px)").matches;
+    // Phones scrub every second frame: half the bytes, 12 fps is still smooth.
+    const step = mobile ? 2 : 1;
     const images: (HTMLImageElement | undefined)[] = new Array(FRAME_COUNT);
     let disposed = false;
     let raf = 0;
@@ -99,7 +101,7 @@ export function FrameScrub({ lang, ctaLabel }: { lang: Locale; ctaLabel: string 
       if (disposed) return;
       while (inFlight < 6 && nextToLoad < FRAME_COUNT) {
         const img = ensure(nextToLoad);
-        nextToLoad += 1;
+        nextToLoad += step;
         if (img.complete) continue;
         inFlight += 1;
         const done = () => {
@@ -154,10 +156,13 @@ export function FrameScrub({ lang, ctaLabel }: { lang: Locale; ctaLabel: string 
       const vh = window.innerHeight;
       const span = rect.height - vh;
       const progress = span > 0 ? Math.min(1, Math.max(0, -rect.top / span)) : 0;
-      const target = Math.round(progress * (FRAME_COUNT - 1));
+      const target = Math.min(
+        FRAME_COUNT - 1,
+        Math.round((progress * (FRAME_COUNT - 1)) / step) * step,
+      );
       // Warm decode just around the playhead.
       ensure(target);
-      ensure(Math.min(FRAME_COUNT - 1, target + 3));
+      ensure(Math.min(FRAME_COUNT - 1, target + 3 * step));
       const idx = images[target]?.complete && images[target]!.naturalWidth
         ? target
         : nearestReady(target);
@@ -181,13 +186,16 @@ export function FrameScrub({ lang, ctaLabel }: { lang: Locale; ctaLabel: string 
   return (
     <div className="fs" ref={wrapRef}>
       <div className="fs__stage">
-        <img
-          alt=""
-          className="fs__poster"
-          fetchPriority="high"
-          ref={posterRef}
-          src={framePath(0, false)}
-        />
+        <picture>
+          <source media="(max-width: 768px)" srcSet={framePath(0, true)} />
+          <img
+            alt=""
+            className="fs__poster"
+            fetchPriority="high"
+            ref={posterRef}
+            src={framePath(0, false)}
+          />
+        </picture>
         <canvas aria-hidden="true" className="fs__canvas" ref={canvasRef} />
         <div aria-hidden="true" className="fs__vignette" />
       </div>
