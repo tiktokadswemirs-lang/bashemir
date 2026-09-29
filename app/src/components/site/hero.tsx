@@ -1,7 +1,8 @@
 /**
  * Hero: one full-screen photo of the port with a slow CSS "Ken Burns" zoom.
  * Replaces the scroll-scrubbed film, which took too long to load and to
- * scroll through; this is a single ~150-300 KB image and one screen tall.
+ * scroll through. One screen tall; the photo is AI-upscaled (Real-ESRGAN x4)
+ * and served per screen size.
  */
 import { smoothScrollTo } from "@/components/site/hooks";
 import { dictionaries, type Locale } from "@/i18n";
@@ -31,12 +32,14 @@ export function Hero({ lang }: { lang: Locale }) {
   return (
     <section className="be-hero" id="top">
       <picture>
-        <source media="(max-width: 768px)" srcSet="/assets/hero/port-1280.webp" />
+        <source media="(max-width: 768px)" srcSet="/assets/hero/port-mobile.webp" />
         <img
           alt=""
           className="be-hero__img"
           fetchPriority="high"
+          sizes="100vw"
           src="/assets/hero/port-1920.webp"
+          srcSet="/assets/hero/port-1920.webp 1920w, /assets/hero/port-2560.webp 2560w"
         />
       </picture>
       <div aria-hidden="true" className="be-hero__shade" />
