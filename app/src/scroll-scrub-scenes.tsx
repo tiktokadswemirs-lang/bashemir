@@ -1,9 +1,6 @@
 /**
- * Brand theme tokens for the journey layer, from the design brief (v2 navy
- * palette). The journey itself is rendered by
- * `components/site/frame-scrub.tsx`, which scrubs a pre-extracted JPEG frame
- * sequence on canvas: video-seek scrubbing (the template's default engine)
- * stuttered on the client's hardware, so the film ships as frames instead.
+ * Brand theme tokens (v2 navy palette), used by the root route for
+ * theme-color. The homepage hero is `components/site/hero.tsx`.
  */
 import type { ScrollScrubTheme } from "@/components/scroll-scrub/scroll-scrub";
 

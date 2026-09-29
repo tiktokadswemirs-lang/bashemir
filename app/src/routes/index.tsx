@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 
-import { FrameScrub } from "@/components/site/frame-scrub";
+import { Hero } from "@/components/site/hero";
 import { useReveals, useSmoothScroll } from "@/components/site/hooks";
 import { SiteHeader, SocialLinks } from "@/components/site/site-header";
 import { dictionaries, resolveLocale } from "@/i18n";
@@ -138,9 +138,7 @@ function Index() {
     <main className="be-page">
       <SiteHeader lang={lang} />
 
-      <div id="top">
-        <FrameScrub ctaLabel={d.ctaDiscuss} lang={lang} />
-      </div>
+      <Hero lang={lang} />
 
       <section className="be-section" id="about">
         <div className="be-container">
