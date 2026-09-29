@@ -7,48 +7,6 @@ import { SiteHeader, SocialLinks } from "@/components/site/site-header";
 import { dictionaries, resolveLocale } from "@/i18n";
 import { productsInCategory } from "@/products";
 import { pageMeta } from "@/seo";
-import dealProcedure from "@/deal-procedure.json";
-
-type Deal = {
-  title: string;
-  subtitle: string;
-  phases: { name: string; steps: { t: string; d: string }[] }[];
-};
-const DEAL = dealProcedure as Record<"ru" | "en" | "tr" | "fa", Deal>;
-
-/** Deal procedure timeline (from the original bashemir.com), two phases. */
-function DealProcedure({ lang }: { lang: "ru" | "en" | "tr" | "fa" }) {
-  const deal = DEAL[lang];
-  let n = 0;
-  return (
-    <section className="be-section be-deal" id="procedure">
-      <div className="be-container" data-reveal="">
-        <div className="be-deal__head">
-          <h2 className="be-h2">{deal.title}</h2>
-          <p className="be-body">{deal.subtitle}</p>
-        </div>
-        <div className="be-deal__phases">
-          {deal.phases.map((ph) => (
-            <div className="be-deal__phase" key={ph.name}>
-              <h3 className="be-deal__phase-name">{ph.name}</h3>
-              <ol className="be-deal__steps">
-                {ph.steps.map((s) => (
-                  <li className="be-deal__step" key={s.t}>
-                    <span className="be-deal__num be-mono">{String(++n).padStart(2, "0")}</span>
-                    <div>
-                      <h4 className="be-deal__title">{s.t}</h4>
-                      <p className="be-deal__desc">{s.d}</p>
-                    </div>
-                  </li>
-                ))}
-              </ol>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 export const Route = createFileRoute("/")({
   // Locale travels in ?lang= so the server renders the right language and the
@@ -265,8 +223,6 @@ function Index() {
           {d.delivery.rail}
         </span>
       </section>
-
-      <DealProcedure lang={lang} />
 
       <section className="be-section be-exchange" id="exchange">
         <div className="be-container" data-reveal="">
