@@ -5,16 +5,22 @@ import { SiteHeader } from "@/components/site/site-header";
 import { FACTORY_UI, factoryBySlug } from "@/factories";
 import { dictionaries, resolveLocale } from "@/i18n";
 import { productBySlug } from "@/products";
-// Full plant histories from the original bashemir.com (ru/en/tr verbatim);
-// Farsi has no source text, so it falls back to English below the FA lead.
+import { pageMeta } from "@/seo";
+// Full plant histories from the original bashemir.com (ru/en/tr verbatim,
+// fa translated from the ru text).
 import factoryTexts from "@/factory-texts.json";
 
-const LONG = factoryTexts as Record<string, Partial<Record<"ru" | "en" | "tr", string[]>>>;
+const LONG = factoryTexts as Record<string, Record<"ru" | "en" | "tr" | "fa", string[]>>;
 
 export const Route = createFileRoute("/factories/$slug")({
   validateSearch: (search: Record<string, unknown>): { lang?: "ru" | "en" | "tr" | "fa" } => ({
     lang: resolveLocale(search.lang),
   }),
+  head: ({ match, params }) => {
+    const lang = resolveLocale(match.search.lang);
+    const f = factoryBySlug(params.slug);
+    return f ? pageMeta(`${f.name[lang]} | Bash Emir`, `${f.desc[lang]} ${LONG[params.slug]?.[lang]?.[0] ?? ""}`) : {};
+  },
   component: FactoryPage,
 });
 
@@ -61,7 +67,7 @@ function FactoryPage() {
           </div>
           <div className="pp__info">
             <p className="pp__desc">{f.desc[lang]}</p>
-            {(LONG[slug]?.[lang === "fa" ? "en" : lang] ?? []).map((para, i) => (
+            {(LONG[slug]?.[lang] ?? []).map((para, i) => (
               <p className="pp__desc pp__desc--body" key={i}>
                 {para}
               </p>

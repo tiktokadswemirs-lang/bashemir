@@ -4,11 +4,17 @@ import { useReveals, useSmoothScroll } from "@/components/site/hooks";
 import { SiteHeader } from "@/components/site/site-header";
 import { dictionaries, resolveLocale } from "@/i18n";
 import { productBySlug, specValue } from "@/products";
+import { pageMeta } from "@/seo";
 
 export const Route = createFileRoute("/products/$slug")({
   validateSearch: (search: Record<string, unknown>): { lang?: "ru" | "en" | "tr" | "fa" } => ({
     lang: resolveLocale(search.lang),
   }),
+  head: ({ match, params }) => {
+    const lang = resolveLocale(match.search.lang);
+    const p = productBySlug(params.slug);
+    return p ? pageMeta(`${p.name[lang]} | Bash Emir`, p.desc[lang]) : {};
+  },
   component: ProductPage,
 });
 

@@ -1,0 +1,290 @@
+{
+  "ru": {
+    "title": "Реальная и надёжная процедура сделки",
+    "subtitle": "Оформляется документально в рамках международной практики",
+    "phases": [
+      {
+        "name": "Фаза подготовки",
+        "steps": [
+          {
+            "t": "LOI (Letter of Intent)",
+            "d": "Выражение намерений покупателя."
+          },
+          {
+            "t": "FCO / Commercial Offer / Proforma Invoice (PI)",
+            "d": "Коммерческое предложение продавца с условиями, объёмом и формулой цены."
+          },
+          {
+            "t": "POF (Proof of Funds, bank-to-bank)",
+            "d": "Банковское подтверждение платёжеспособности покупателя. Без POF POP не раскрывается."
+          },
+          {
+            "t": "POP (Proof of Product)",
+            "d": "Верифицируемые доказательства наличия продукта. Предоставляется только после POF."
+          },
+          {
+            "t": "ICPO (Irrevocable Corporate Purchase Order)",
+            "d": "Обязательство покупателя на условиях предложения."
+          },
+          {
+            "t": "SPA (Sales & Purchase Agreement)",
+            "d": "Основной контракт сделки между продавцом и покупателем. Подписывается до открытия LC."
+          },
+          {
+            "t": "NCNDA / IMFPA / Fee Protection Agreement",
+            "d": "Документы, регулирующие защиту от обхода и выплату брокерского вознаграждения."
+          }
+        ]
+      },
+      {
+        "name": "Фаза исполнения (UCP 600)",
+        "steps": [
+          {
+            "t": "Commercial Invoice (CI)",
+            "d": "Официальный документ для банка, строго по SPA."
+          },
+          {
+            "t": "LC / SBLC",
+            "d": "Открывается покупателем на основании SPA и CI."
+          },
+          {
+            "t": "Предотгрузочная инспекция",
+            "d": "SGS / Intertek: количество и качество."
+          },
+          {
+            "t": "TTT / TTV / STS / Lifting / Delivery",
+            "d": "TTT: Tank to Tank Transfer, TTV: Tank to Vessel Transfer, STS: Ship to Ship Transfer. Процедура определяется продавцом на основании международных норм Торговой палаты и сопровождается только после открытия LC."
+          },
+          {
+            "t": "Отгрузочные документы",
+            "d": "Commercial Invoice, Bill of Lading, Certificate of Origin, Inspection Certificate, Insurance Certificate (если применимо)."
+          },
+          {
+            "t": "Оплата",
+            "d": "Производится банком покупателя против документов."
+          },
+          {
+            "t": "Комиссия брокера",
+            "d": "Выплачивается согласно NCNDA / IMFPA / Fee Protection Agreement."
+          }
+        ]
+      }
+    ]
+  },
+  "en": {
+    "title": "Real and Reliable Transaction Procedure",
+    "subtitle": "Documented according to international practice",
+    "phases": [
+      {
+        "name": "Preparation Phase",
+        "steps": [
+          {
+            "t": "LOI (Letter of Intent)",
+            "d": "Expression of buyer's intentions."
+          },
+          {
+            "t": "FCO / Commercial Offer / Proforma Invoice (PI)",
+            "d": "Seller's commercial proposal with terms, volume and price formula."
+          },
+          {
+            "t": "POF (Proof of Funds, bank-to-bank)",
+            "d": "Bank confirmation of buyer's solvency. Without POF, POP is not disclosed."
+          },
+          {
+            "t": "POP (Proof of Product)",
+            "d": "Verifiable evidence of product availability. Provided only after POF."
+          },
+          {
+            "t": "ICPO (Irrevocable Corporate Purchase Order)",
+            "d": "Buyer's commitment on the terms of the offer."
+          },
+          {
+            "t": "SPA (Sales & Purchase Agreement)",
+            "d": "Main contract for the deal between seller and buyer. Signed before LC opening."
+          },
+          {
+            "t": "NCNDA / IMFPA / Fee Protection Agreement",
+            "d": "Documents regulating protection from circumvention and broker fee payment."
+          }
+        ]
+      },
+      {
+        "name": "Execution Phase (UCP 600)",
+        "steps": [
+          {
+            "t": "Commercial Invoice (CI)",
+            "d": "Official document for the bank, strictly according to SPA."
+          },
+          {
+            "t": "LC / SBLC",
+            "d": "Opened by buyer based on SPA and CI."
+          },
+          {
+            "t": "Pre-shipment Inspection",
+            "d": "SGS / Intertek: quantity and quality."
+          },
+          {
+            "t": "TTT / TTV / STS / Lifting / Delivery",
+            "d": "TTT: Tank to Tank Transfer, TTV: Tank to Vessel Transfer, STS: Ship to Ship Transfer. Procedure is determined by seller based on international Chamber of Commerce standards and accompanied only after LC opening."
+          },
+          {
+            "t": "Shipping Documents",
+            "d": "Commercial Invoice, Bill of Lading, Certificate of Origin, Inspection Certificate, Insurance Certificate (if applicable)."
+          },
+          {
+            "t": "Payment",
+            "d": "Made by buyer's bank against documents."
+          },
+          {
+            "t": "Broker Commission",
+            "d": "Paid according to NCNDA / IMFPA / Fee Protection Agreement."
+          }
+        ]
+      }
+    ]
+  },
+  "tr": {
+    "title": "Gerçek ve Güvenilir İşlem Proседürü",
+    "subtitle": "Uluslararası uygulamalar çerçevesinde belgelenir",
+    "phases": [
+      {
+        "name": "Hazırlık Aşaması",
+        "steps": [
+          {
+            "t": "LOI (İniyatif Mektubu)",
+            "d": "Alıcının niyet ifadesi."
+          },
+          {
+            "t": "FCO / Ticari Teklif / Proforma Fatura (PI)",
+            "d": "Satıcının şartlar, hacim и fiyat formülü ile ticari teklifi."
+          },
+          {
+            "t": "POF (Fon Kanıtı, banka-banka)",
+            "d": "Alıcının ödeme gücünün banka teyidi. POF olmadan POP açıklanmaz."
+          },
+          {
+            "t": "POP (Ürün Kanıtı)",
+            "d": "Ürün mevcudiyetinin doğrulanabilir kanıtı. Sadece POF'dan sonra sağlanır."
+          },
+          {
+            "t": "ICPO (Geri Dönülmez Kurumsal Satın Alma Emri)",
+            "d": "Alıcının teklifin şartlarına bağlı taahhüdü."
+          },
+          {
+            "t": "SPA (Satış и Satın Alma Sözleşmesi)",
+            "d": "Satıcı и alıcı arasındaki ana işlem sözleşmesi. LC açılmasından önce imzalanır."
+          },
+          {
+            "t": "NCNDA / IMFPA / Ücret Koruma Sözleşmesi",
+            "d": "Atlatmaya karşı koruma и aracılık ücretinin ödenmesini düzenleyen belgeler."
+          }
+        ]
+      },
+      {
+        "name": "Uygulama Aşaması (UCP 600)",
+        "steps": [
+          {
+            "t": "Ticari Fatura (CI)",
+            "d": "Banka için resmi belge, SPA'ya kesin uyum."
+          },
+          {
+            "t": "LC / SBLC",
+            "d": "Alıcı tarafından SPA и CI temelinde açılır."
+          },
+          {
+            "t": "Gemi Kargo Öncesi Muayenesi",
+            "d": "SGS / Intertek: miktar и kalite."
+          },
+          {
+            "t": "TTT / TTV / STS / Kaldırma / Teslimat",
+            "d": "TTT: Tank to Tank Transfer, TTV: Tank to Vessel Transfer, STS: Ship to Ship Transfer. Prosedür satıcı tarafından Ticaret Odası uluslararası normlarına göre belirlenir ve yalnızca LC açılmasından sonra eşlik edilir."
+          },
+          {
+            "t": "Sevkiyat Belgeleri",
+            "d": "Ticari Fatura, Konşimento, Menşe Sertifikası, Muayene Sertifikası, Sigorta Sertifikası (uygunsa)."
+          },
+          {
+            "t": "Ödeme",
+            "d": "Alıcının bankası tarafından belgeler karşılığında yapılır."
+          },
+          {
+            "t": "Broker Komisyonu",
+            "d": "NCNDA / IMFPA / Ücret Koruma Sözleşmesine göre ödenir."
+          }
+        ]
+      }
+    ]
+  },
+  "fa": {
+    "title": "روند واقعی و مطمئن معامله",
+    "subtitle": "مستندسازی مطابق با رویه بین‌المللی",
+    "phases": [
+      {
+        "name": "مرحله آماده‌سازی",
+        "steps": [
+          {
+            "t": "LOI (Letter of Intent)",
+            "d": "اعلام قصد خریدار."
+          },
+          {
+            "t": "FCO / Commercial Offer / Proforma Invoice (PI)",
+            "d": "پیشنهاد تجاری فروشنده با شرایط، حجم و فرمول قیمت."
+          },
+          {
+            "t": "POF (Proof of Funds, bank-to-bank)",
+            "d": "تأیید بانکی توان پرداخت خریدار. بدون POF، POP ارائه نمی‌شود."
+          },
+          {
+            "t": "POP (Proof of Product)",
+            "d": "مدارک قابل‌راستی‌آزمایی وجود محصول. فقط پس از POF ارائه می‌شود."
+          },
+          {
+            "t": "ICPO (Irrevocable Corporate Purchase Order)",
+            "d": "تعهد خریدار بر اساس شرایط پیشنهاد."
+          },
+          {
+            "t": "SPA (Sales & Purchase Agreement)",
+            "d": "قرارداد اصلی معامله میان فروشنده و خریدار. پیش از گشایش LC امضا می‌شود."
+          },
+          {
+            "t": "NCNDA / IMFPA / Fee Protection Agreement",
+            "d": "اسنادی که حمایت در برابر دور زدن و پرداخت کارمزد کارگزار را تنظیم می‌کنند."
+          }
+        ]
+      },
+      {
+        "name": "مرحله اجرا (UCP 600)",
+        "steps": [
+          {
+            "t": "Commercial Invoice (CI)",
+            "d": "سند رسمی برای بانک، دقیقاً مطابق SPA."
+          },
+          {
+            "t": "LC / SBLC",
+            "d": "توسط خریدار بر اساس SPA و CI گشایش می‌شود."
+          },
+          {
+            "t": "بازرسی پیش از بارگیری",
+            "d": "SGS / Intertek: کمیت و کیفیت."
+          },
+          {
+            "t": "TTT / TTV / STS / Lifting / Delivery",
+            "d": "TTT: انتقال مخزن به مخزن، TTV: انتقال مخزن به کشتی، STS: انتقال کشتی به کشتی. روند توسط فروشنده بر اساس استانداردهای بین‌المللی اتاق بازرگانی تعیین می‌شود و تنها پس از گشایش LC انجام می‌گیرد."
+          },
+          {
+            "t": "اسناد حمل",
+            "d": "Commercial Invoice، Bill of Lading، Certificate of Origin، Inspection Certificate، Insurance Certificate (در صورت لزوم)."
+          },
+          {
+            "t": "پرداخت",
+            "d": "توسط بانک خریدار در برابر اسناد انجام می‌شود."
+          },
+          {
+            "t": "کمیسیون کارگزار",
+            "d": "مطابق NCNDA / IMFPA / Fee Protection Agreement پرداخت می‌شود."
+          }
+        ]
+      }
+    ]
+  }
+}

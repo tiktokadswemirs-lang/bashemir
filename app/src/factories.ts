@@ -44,12 +44,12 @@ export const FACTORIES: Factory[] = [
     image: "/assets/factories/maryazot.jpg",
     name: { ru: "Производственное объединение «Марыазот»", en: "Maryazot production association", tr: "Maryazot üretim birliği", fa: "مجتمع تولیدی ماری‌آزوت" },
     desc: {
-      ru: "Объединение азотной промышленности в Мары: аммиак и карбамид.",
-      en: "Nitrogen industry association in Mary: ammonia and urea.",
-      tr: "Mary şehrinde azot sanayisi birliği: amonyak ve üre.",
-      fa: "مجتمع صنایع نیتروژن در ماری: آمونیاک و اوره.",
+      ru: "Первое в Туркменистане предприятие азотных удобрений (Мары, 1984): аммиачная селитра, аммиак, азотная кислота.",
+      en: "Turkmenistan's first nitrogen fertilizer plant (Mary, 1984): ammonium nitrate, ammonia, nitric acid.",
+      tr: "Türkmenistan'ın ilk azotlu gübre tesisi (Mary, 1984): amonyum nitrat, amonyak, nitrik asit.",
+      fa: "نخستین واحد کود نیتروژنی ترکمنستان (ماری، ۱۹۸۴): نیترات آمونیوم، آمونیاک، اسید نیتریک.",
     },
-    products: ["urea46"],
+    products: [],
   },
   {
     slug: "himzavod-niyazov",
@@ -145,19 +145,19 @@ export const FACTORIES: Factory[] = [
       tr: "Ahal vilayetinde fabrika: GTG teknolojisiyle doğal gazdan sentetik ECO 93 benzin.",
       fa: "کارخانه در استان آخال: بنزین سنتزی ECO 93 از گاز طبیعی با فناوری GTG.",
     },
-    products: ["eco93"],
+    products: ["eco93", "lpg", "diesel"],
   },
   {
     slug: "neft-zavod",
     image: "/assets/factories/neft-zavod.jpg",
     name: { ru: "Сейдинский нефтеперерабатывающий завод", en: "Seydi oil refinery", tr: "Seydi petrol rafinerisi", fa: "پالایشگاه نفت سیدی" },
     desc: {
-      ru: "Нефтеперерабатывающий завод в Сейди, Лебапский велаят: дизельное топливо, мазут, битум, нефтяной кокс.",
-      en: "Oil refinery in Seydi, Lebap province: diesel fuel, fuel oil, bitumen, petroleum coke.",
-      tr: "Lebap vilayeti Seydi petrol rafinerisi: dizel, fuel oil, bitüm, petrol koku.",
-      fa: "پالایشگاه نفت در سیدی، استان لباب: گازوئیل، نفت کوره، قیر، کک نفتی.",
+      ru: "Нефтеперерабатывающий завод в Сейди, Лебапский велаят: мазут, дизельное топливо, бензины, сжиженный газ, дорожный битум.",
+      en: "Oil refinery in Seydi, Lebap province: fuel oil, diesel, gasoline, LPG, road bitumen.",
+      tr: "Lebap vilayeti Seydi petrol rafinerisi: fuel oil, dizel, benzin, LPG, yol bitümü.",
+      fa: "پالایشگاه نفت در سیدی، استان لباب: نفت کوره، گازوئیل، بنزین، گاز مایع، قیر جاده‌ای.",
     },
-    products: ["diesel", "lsfo", "bitumen", "petcoke"],
+    products: ["diesel", "lpg", "bitumen"],
   },
 ];
 

@@ -3,6 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useReveals, useSmoothScroll } from "@/components/site/hooks";
 import { SiteHeader } from "@/components/site/site-header";
 import { dictionaries, resolveLocale } from "@/i18n";
+import { pageMeta } from "@/seo";
 import { FACTORIES } from "@/factories";
 
 export const Route = createFileRoute("/factories/")({
@@ -11,6 +12,10 @@ export const Route = createFileRoute("/factories/")({
   ): { lang?: "ru" | "en" | "tr" | "fa" } => ({
     lang: resolveLocale(search.lang),
   }),
+  head: ({ match }) => {
+    const d = dictionaries[resolveLocale(match.search.lang)];
+    return pageMeta(`${d.factoriesUi.title} | Bash Emir`, d.factoriesUi.intro);
+  },
   component: FactoriesPage,
 });
 

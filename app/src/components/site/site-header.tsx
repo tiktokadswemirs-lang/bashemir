@@ -9,13 +9,56 @@ const SECTIONS = ["about", "products", "delivery", "exchange", "legal", "contact
 const MENU: Record<Locale, string> = { ru: "Меню", en: "Menu", tr: "Menü", fa: "منو" };
 
 const SOCIAL = [
-  { icon: "whatsapp", href: "https://wa.me/99365616173", label: { ru: "WhatsApp", en: "WhatsApp", tr: "WhatsApp", fa: "واتس‌اپ" } },
-  { icon: "whatsapp", href: "https://wa.me/998939090341", label: { ru: "WhatsApp Бизнес", en: "WhatsApp Business", tr: "WhatsApp Business", fa: "واتس‌اپ بیزینس" } },
-  { icon: "whatsapp", href: "https://whatsapp.com/channel/0029VbCnEhlDuMRk9CQcyE10", label: { ru: "WhatsApp канал", en: "WhatsApp channel", tr: "WhatsApp kanalı", fa: "کانال واتس‌اپ" } },
-  { icon: "telegram", href: "https://t.me/bashemir", label: { ru: "Telegram канал", en: "Telegram channel", tr: "Telegram kanalı", fa: "کانال تلگرام" } },
-  { icon: "instagram", href: "https://www.instagram.com/bashemir5", label: { ru: "Instagram", en: "Instagram", tr: "Instagram", fa: "اینستاگرام" } },
-  { icon: "tiktok", href: "https://www.tiktok.com/@bashemir5", label: { ru: "TikTok", en: "TikTok", tr: "TikTok", fa: "تیک‌تاک" } },
-  { icon: "linkedin", href: "https://www.linkedin.com/company/individual-enterprise-bash-emir/", label: { ru: "LinkedIn", en: "LinkedIn", tr: "LinkedIn", fa: "لینکدین" } },
+  {
+    icon: "whatsapp",
+    href: "https://wa.me/99365616173",
+    label: { ru: "WhatsApp", en: "WhatsApp", tr: "WhatsApp", fa: "واتس‌اپ" },
+  },
+  {
+    icon: "whatsapp",
+    href: "https://wa.me/998939090341",
+    label: {
+      ru: "WhatsApp Бизнес",
+      en: "WhatsApp Business",
+      tr: "WhatsApp Business",
+      fa: "واتس‌اپ بیزینس",
+    },
+  },
+  {
+    icon: "whatsapp",
+    href: "https://whatsapp.com/channel/0029VbCnEhlDuMRk9CQcyE10",
+    label: {
+      ru: "WhatsApp канал",
+      en: "WhatsApp channel",
+      tr: "WhatsApp kanalı",
+      fa: "کانال واتس‌اپ",
+    },
+  },
+  {
+    icon: "telegram",
+    href: "https://t.me/bashemir",
+    label: {
+      ru: "Telegram канал",
+      en: "Telegram channel",
+      tr: "Telegram kanalı",
+      fa: "کانال تلگرام",
+    },
+  },
+  {
+    icon: "instagram",
+    href: "https://www.instagram.com/bashemir5",
+    label: { ru: "Instagram", en: "Instagram", tr: "Instagram", fa: "اینستاگرام" },
+  },
+  {
+    icon: "tiktok",
+    href: "https://www.tiktok.com/@bashemir5",
+    label: { ru: "TikTok", en: "TikTok", tr: "TikTok", fa: "تیک‌تاک" },
+  },
+  {
+    icon: "linkedin",
+    href: "https://www.linkedin.com/company/individual-enterprise-bash-emir/",
+    label: { ru: "LinkedIn", en: "LinkedIn", tr: "LinkedIn", fa: "لینکدین" },
+  },
 ] as const;
 
 /** Social channel icons (footer with labels, mobile drawer icons only). */
@@ -77,62 +120,75 @@ export function SiteHeader({
   const logo = <img alt="Bash Emir" className="be-nav__logo" src="/assets/brand/logo-dark.png" />;
 
   return (
-    <header className="be-nav">
-      <div className="be-nav__inner">
-        {home ? (
-          <a className="be-nav__brand" href="#top" onClick={go("top")}>
-            {logo}
-          </a>
-        ) : (
-          <Link className="be-nav__brand" search={{ lang }} to="/">
-            {logo}
-          </Link>
-        )}
-        <nav className="be-nav__links" aria-label={MENU[lang]}>
-          {SECTIONS.map((id) => (
-            <a className="be-nav__link" href={href(id)} key={id} onClick={go(id)}>
-              {d.nav[id]}
+    <>
+      <header className="be-nav">
+        <div className="be-nav__inner">
+          {home ? (
+            <a className="be-nav__brand" href="#top" onClick={go("top")}>
+              {logo}
             </a>
-          ))}
-        </nav>
-        <LangMenu lang={lang} page={page} slug={slug} />
-        <button
-          aria-expanded={open}
-          aria-label={MENU[lang]}
-          className="be-burger"
-          onClick={() => setOpen((v) => !v)}
-          type="button"
-        >
-          <span />
-          <span />
-          <span />
-        </button>
-      </div>
-      <div className="be-drawer" hidden={!open}>
-        <nav className="be-drawer__list" aria-label={MENU[lang]}>
-          {SECTIONS.map((id, i) => (
-            <a
-              className="be-drawer__link"
-              href={href(id)}
-              key={id}
-              onClick={go(id)}
-              style={{ animationDelay: `${i * 45}ms` }}
-            >
-              {d.nav[id]}
-            </a>
-          ))}
-          <a
-            className="be-drawer__link be-drawer__link--sub"
-            href={`/factories?lang=${lang}`}
-            style={{ animationDelay: `${SECTIONS.length * 45}ms` }}
+          ) : (
+            <Link className="be-nav__brand" search={{ lang }} to="/">
+              {logo}
+            </Link>
+          )}
+          <nav className="be-nav__links" aria-label={MENU[lang]}>
+            {SECTIONS.map((id) => (
+              <a className="be-nav__link" href={href(id)} key={id} onClick={go(id)}>
+                {d.nav[id]}
+              </a>
+            ))}
+          </nav>
+          <LangMenu lang={lang} page={page} slug={slug} />
+          <button
+            aria-expanded={open}
+            aria-label={MENU[lang]}
+            className="be-burger"
+            onClick={() => setOpen((v) => !v)}
+            type="button"
           >
-            {d.about.factoriesLink}
-          </a>
-        </nav>
-        <div className="be-drawer__social">
-          <SocialLinks lang={lang} />
+            <span />
+            <span />
+            <span />
+          </button>
         </div>
-      </div>
-    </header>
+        <div className="be-drawer" hidden={!open}>
+          <nav className="be-drawer__list" aria-label={MENU[lang]}>
+            {SECTIONS.map((id, i) => (
+              <a
+                className="be-drawer__link"
+                href={href(id)}
+                key={id}
+                onClick={go(id)}
+                style={{ animationDelay: `${i * 45}ms` }}
+              >
+                {d.nav[id]}
+              </a>
+            ))}
+            <a
+              className="be-drawer__link be-drawer__link--sub"
+              href={`/factories?lang=${lang}`}
+              style={{ animationDelay: `${SECTIONS.length * 45}ms` }}
+            >
+              {d.about.factoriesLink}
+            </a>
+          </nav>
+          <div className="be-drawer__social">
+            <SocialLinks lang={lang} />
+          </div>
+        </div>
+      </header>
+      {open ? null : (
+        <a
+          aria-label="WhatsApp"
+          className="be-wa-fab"
+          href="https://wa.me/998939090341"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <img alt="" src="/assets/social/whatsapp.svg" />
+        </a>
+      )}
+    </>
   );
 }

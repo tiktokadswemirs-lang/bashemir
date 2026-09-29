@@ -20,6 +20,7 @@ import { scrollScrubTheme } from "../scroll-scrub-scenes";
 // repo by the marketplace meta API and read at BUILD time — no runtime fetch.
 // Editing it via the app settings UI rewrites this file and redeploys the app.
 import appMetaJson from "../app-meta.json";
+import { ORGANIZATION_LD } from "../seo";
 
 declare const __HF_DESIGN_INSPECTOR__: boolean;
 
@@ -86,6 +87,7 @@ function buildHead(meta: AppMeta) {
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title },
       { name: "description", content: description },
+      { "script:ld+json": ORGANIZATION_LD },
       { name: "author", content: "Bash Emir" },
       { name: "theme-color", content: scrollScrubTheme.background },
       { property: "og:title", content: title },
@@ -185,6 +187,12 @@ function RootShell({ children }: { children: ReactNode }) {
     select: (s) => s.location.search as Record<string, unknown>,
   });
   const locale = resolveLocale(search?.lang);
+  // The static export (GitHub Pages) prerenders RU only, and hydration keeps
+  // the server's <html> attributes, so re-apply them on the client.
+  useEffect(() => {
+    document.documentElement.lang = dictionaries[locale].htmlLang;
+    document.documentElement.dir = isRtl(locale) ? "rtl" : "ltr";
+  }, [locale]);
   return (
     <html
       lang={dictionaries[locale].htmlLang}

@@ -2364,3 +2364,137 @@ body {
     overflow-wrap: anywhere;
   }
 }
+
+/* ---------- deal procedure timeline ---------- */
+
+.be-deal__head {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.be-deal__head .be-body {
+  margin-top: 1rem;
+}
+
+.be-deal__phases {
+  display: grid;
+  gap: 3rem;
+}
+
+@media (min-width: 900px) {
+  .be-deal__phases {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+}
+
+.be-deal__phase-name {
+  font-family: var(--be-font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--be-accent);
+  margin: 0 0 1.5rem;
+}
+
+.be-deal__steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.be-deal__steps::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 1.05rem;
+  top: 0.8rem;
+  bottom: 0.8rem;
+  width: 1px;
+  background: var(--be-hairline);
+}
+
+.be-deal__step {
+  position: relative;
+  display: flex;
+  gap: 1.1rem;
+  padding-bottom: 1.6rem;
+}
+
+.be-deal__step:last-child {
+  padding-bottom: 0;
+}
+
+.be-deal__num {
+  position: relative;
+  z-index: 1;
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 50%;
+  border: 1px solid var(--be-hairline);
+  background: var(--be-surface-2);
+  font-size: 0.7rem;
+  color: var(--be-accent);
+  transition: border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.be-deal__step:hover .be-deal__num {
+  border-color: var(--be-accent);
+  background: color-mix(in srgb, var(--be-accent) 16%, var(--be-surface-2));
+}
+
+.be-deal__title {
+  margin: 0.35rem 0 0;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--be-ink);
+}
+
+.be-deal__desc {
+  margin: 0.35rem 0 0;
+  max-width: 52ch;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--be-muted);
+}
+
+/* ---------- floating WhatsApp button ---------- */
+
+.be-wa-fab {
+  position: fixed;
+  inset-inline-end: 1.1rem;
+  bottom: calc(1.1rem + env(safe-area-inset-bottom));
+  z-index: 39;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25d366;
+  box-shadow: 0 14px 30px -12px rgb(0 0 0 / 0.7);
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  animation: be-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both;
+}
+
+.be-wa-fab:hover {
+  transform: scale(1.07);
+}
+
+.be-wa-fab:active {
+  transform: scale(0.96);
+}
+
+.be-wa-fab img {
+  width: 28px;
+  height: 28px;
+  filter: invert(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .be-wa-fab {
+    animation: none;
+  }
+}
