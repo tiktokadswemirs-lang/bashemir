@@ -153,7 +153,7 @@ const ru: Dict = {
       label: "Группа",
     },
     products: {
-      title: "14 продуктов: от СУГ до битума",
+      title: "15 продуктов: от СУГ до битума",
       body: "Закупаем сырьё за собственные средства и работаем с поставщиками напрямую, без посредников.",
       tags: ["СУГ", "ECO 93", "Битум"],
       label: "Продукты",
@@ -173,7 +173,7 @@ const ru: Dict = {
     p2: "Закупку сырья на территории Туркменистана мы ведём за собственные средства. Прямые контракты с поставщиками гарантируют стабильность поставок, независимость от посредников и контроль качества продукции.",
     metrics: [
       { value: "3", caption: "страны присутствия" },
-      { value: "14", caption: "продуктов в портфеле" },
+      { value: "15", caption: "продуктов в портфеле" },
       { value: "2020", caption: "год основания" },
     ],
     mapCaption: "Маршруты группы: Туркменбаши, Баку, Бухара",
@@ -186,7 +186,7 @@ const ru: Dict = {
   },
   products: {
     eyebrow: "Каталог",
-    title: "Сопровождаем сделки по 14 продуктам",
+    title: "Сопровождаем сделки по 15 продуктам",
     note: "Полные спецификации, паспорта качества и условия отгрузки предоставляются по запросу.",
     quoteCta: "Запросить цену",
     quoteLine: "Ответим с ценой и условиями в течение одного рабочего дня.",
@@ -214,7 +214,10 @@ const ru: Dict = {
           "Хлорид натрия промышленного назначения",
         ],
       },
-      { name: "Строительные материалы", items: ["Белый цемент"] },
+      {
+        name: "Строительные материалы",
+        items: ["Белый цемент", "Полипропиленовые мешки и Биг-Бэги"],
+      },
     ],
   },
   delivery: {
@@ -359,7 +362,7 @@ const en: Dict = {
       label: "Group",
     },
     products: {
-      title: "14 products: from LPG to bitumen",
+      title: "15 products: from LPG to bitumen",
       body: "We buy feedstock with our own capital and work with producers directly, with no intermediaries.",
       tags: ["LPG", "ECO 93", "Bitumen"],
       label: "Products",
@@ -379,7 +382,7 @@ const en: Dict = {
     p2: "We purchase feedstock in Turkmenistan with our own capital. Direct contracts with producers guarantee stable supply, independence from intermediaries and quality control of every cargo.",
     metrics: [
       { value: "3", caption: "countries of presence" },
-      { value: "14", caption: "products in the book" },
+      { value: "15", caption: "products in the book" },
       { value: "2020", caption: "year established" },
     ],
     mapCaption: "Group routes: Turkmenbashi, Baku, Bukhara",
@@ -392,7 +395,7 @@ const en: Dict = {
   },
   products: {
     eyebrow: "Catalog",
-    title: "We support deals in 14 products",
+    title: "We support deals in 15 products",
     note: "Full specifications, quality passports and loading terms are available on request.",
     quoteCta: "Request a price",
     quoteLine: "We reply with price and terms within one business day.",
@@ -420,7 +423,10 @@ const en: Dict = {
           "Industrial-grade sodium chloride",
         ],
       },
-      { name: "Construction materials", items: ["White cement"] },
+      {
+        name: "Construction materials",
+        items: ["White cement", "Polypropylene bags and Big-Bags"],
+      },
     ],
   },
   delivery: {
@@ -565,7 +571,7 @@ const tr: Dict = {
       label: "Grup",
     },
     products: {
-      title: "LPG'den bitüme 14 ürün",
+      title: "LPG'den bitüme 15 ürün",
       body: "Hammaddeyi kendi sermayemizle satın alır, üreticilerle aracısız ve doğrudan çalışırız.",
       tags: ["LPG", "ECO 93", "Bitüm"],
       label: "Ürünler",
@@ -585,7 +591,7 @@ const tr: Dict = {
     p2: "Türkmenistan'daki hammadde alımlarını kendi sermayemizle yaparız. Üreticilerle doğrudan sözleşmeler; istikrarlı tedarik, aracılardan bağımsızlık ve her kargoda kalite kontrolü garanti eder.",
     metrics: [
       { value: "3", caption: "faaliyet ülkesi" },
-      { value: "14", caption: "portföydeki ürün" },
+      { value: "15", caption: "portföydeki ürün" },
       { value: "2020", caption: "kuruluş yılı" },
     ],
     mapCaption: "Grup rotaları: Türkmenbaşı, Bakü, Buhara",
@@ -598,7 +604,7 @@ const tr: Dict = {
   },
   products: {
     eyebrow: "Katalog",
-    title: "14 üründe işlem destekliyoruz",
+    title: "15 üründe işlem destekliyoruz",
     note: "Tam spesifikasyonlar, kalite sertifikaları ve yükleme şartları talep üzerine sunulur.",
     quoteCta: "Fiyat isteyin",
     quoteLine: "Bir iş günü içinde fiyat ve şartlarla dönüş yaparız.",
@@ -626,7 +632,10 @@ const tr: Dict = {
           "Endüstriyel sodyum klorür",
         ],
       },
-      { name: "İnşaat malzemeleri", items: ["Beyaz çimento"] },
+      {
+        name: "İnşaat malzemeleri",
+        items: ["Beyaz çimento", "Polipropilen çuval ve Big-Bag'ler"],
+      },
     ],
   },
   delivery: {
@@ -771,7 +780,7 @@ const fa: Dict = {
       label: "گروه",
     },
     products: {
-      title: "۱۴ محصول: از ال‌پی‌جی تا قیر",
+      title: "۱۵ محصول: از ال‌پی‌جی تا قیر",
       body: "خوراک را با سرمایه خود می‌خریم و بدون واسطه، مستقیم با تولیدکنندگان کار می‌کنیم.",
       tags: ["ال‌پی‌جی", "ECO 93", "قیر"],
       label: "محصولات",
@@ -791,7 +800,7 @@ const fa: Dict = {
     p2: "خرید خوراک در ترکمنستان را با سرمایه خود انجام می‌دهیم. قراردادهای مستقیم با تولیدکنندگان، پایداری تأمین، استقلال از واسطه‌ها و کنترل کیفیت هر محموله را تضمین می‌کند.",
     metrics: [
       { value: "3", caption: "کشور حضور" },
-      { value: "14", caption: "محصول در سبد" },
+      { value: "15", caption: "محصول در سبد" },
       { value: "2020", caption: "سال تأسیس" },
     ],
     mapCaption: "مسیرهای گروه: ترکمن‌باشی، باکو، بخارا",
@@ -804,7 +813,7 @@ const fa: Dict = {
   },
   products: {
     eyebrow: "کاتالوگ",
-    title: "معاملات ۱۴ محصول را پشتیبانی می‌کنیم",
+    title: "معاملات ۱۵ محصول را پشتیبانی می‌کنیم",
     note: "مشخصات کامل، گواهی‌های کیفیت و شرایط بارگیری بنا به درخواست ارائه می‌شود.",
     quoteCta: "استعلام قیمت",
     quoteLine: "ظرف یک روز کاری با قیمت و شرایط پاسخ می‌دهیم.",
@@ -832,7 +841,10 @@ const fa: Dict = {
           "کلرید سدیم صنعتی",
         ],
       },
-      { name: "مصالح ساختمانی", items: ["سیمان سفید"] },
+      {
+        name: "مصالح ساختمانی",
+        items: ["سیمان سفید", "کیسه‌های پلی‌پروپیلن و بیگ‌بگ"],
+      },
     ],
   },
   delivery: {

@@ -470,6 +470,29 @@ export const PRODUCTS: Product[] = [
       fa: "سیمان سفید نوعی سیمان ویژه با سفیدی بالاست که در ساخت‌وساز تزئینی، بتن معماری، کاشی نما، سنگ‌ریزه مرمری و دیگر مصالح نازک‌کاری به کار می‌رود.",
     },
   },
+  {
+    slug: "pp-bags",
+    category: 3,
+    image: "/assets/products/pp-bags-3.jpg",
+    gallery: [
+      "/assets/products/pp-bags-1.jpg",
+      "/assets/products/pp-bags-2.jpg",
+      "/assets/products/pp-bags-4.jpg",
+      "/assets/products/pp-bags-5.jpg",
+    ],
+    name: {
+      ru: "Полипропиленовые мешки и Биг-Бэги",
+      en: "Polypropylene bags and Big-Bags",
+      tr: "Polipropilen çuval ve Big-Bag'ler",
+      fa: "کیسه‌های پلی‌پروپیلن و بیگ‌بگ",
+    },
+    desc: {
+      ru: "Полипропиленовые мешки и Биг-Бэги из первичного сырья, произведённые на оборудовании ведущих мировых производителей Starlinger (Австрия) и Lohia Corp (Индия). Продукция отличается высокой прочностью, стойкостью к механическим нагрузкам и долговечностью. Применяется для фасовки, хранения и транспортировки сыпучих грузов: зерна, удобрений, химической продукции и строительных материалов.",
+      en: "Polypropylene bags and Big-Bags made from virgin raw materials, manufactured on equipment from world-leading producers Starlinger (Austria) and Lohia Corp (India). The products feature high tensile strength, resistance to mechanical loads and long service life. Used for packing, storage and transportation of bulk goods: grain, fertilizers, chemicals and construction materials.",
+      tr: "Dünya lideri üreticiler Starlinger (Avusturya) ve Lohia Corp (Hindistan) ekipmanlarıyla birincil hammaddeden üretilmiş polipropilen çuval ve Big-Bag'ler. Ürünler yüksek çekme mukavemeti, mekanik yüklere dayanıklılık ve uzun ömürlülük ile öne çıkar. Tahıl, gübre, kimyasal ürünler ve yapı malzemeleri gibi dökme yüklerin ambalajlanması, depolanması ve taşınmasında kullanılır.",
+      fa: "کیسه‌های پلی‌پروپیلن و بیگ‌بگ از مواد اولیه دست اول، تولیدشده بر روی تجهیزات تولیدکنندگان پیشرو جهانی Starlinger (اتریش) و Lohia Corp (هند). محصولات با استحکام کششی بالا، مقاومت در برابر بارهای مکانیکی و عمر طولانی متمایز می‌شوند. برای بسته‌بندی، انبارداری و حمل‌ونقل بارهای فله‌ای مانند غلات، کودها، مواد شیمیایی و مصالح ساختمانی به کار می‌رود.",
+    },
+  },
 ];
 
 export function productBySlug(slug: string): Product | undefined {

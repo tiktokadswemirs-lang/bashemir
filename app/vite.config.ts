@@ -126,6 +126,7 @@ export default defineConfig(({ command, mode }) => {
           "sulfur",
           "salt",
           "cement",
+          "pp-bags",
         ]
           .map((p) => ({ path: p.startsWith("/") ? p : `/products/${p}` }))
           .concat(
